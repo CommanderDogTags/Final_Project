@@ -1,0 +1,63 @@
+$theme-colors: (
+    'primary': #67DDBB,
+    'secondary': #67C4DD,
+    'info': #6789DD,
+    'warning': #BB67DD,
+    'danger': #DD67C4,
+    'muted': #c5c5c5
+);
+
+#plantstagram {
+    font-family: 'Lobster', cursive;
+    font-size: 50px;
+    text-shadow: 2px 2px rgb(173, 251, 229);
+}
+
+@media screen and (max-width:500px){
+    h2{
+        font-size:35px !important;
+    }  
+}
+
+hr.linedivide{
+	border-top: 1px solid #c5c5c5;
+}
+
+.iconfontsize {
+    font-size: 40px;
+}
+
+@media screen and (max-width:500px){
+    .iconfontsize{
+        font-size:25px !important;
+    }  
+}
+
+.shadow-effect {
+    box-shadow: 2px 2px rgb(173, 251, 229), 2px 2px rgb(173, 251, 229);
+}
+
+.logout {
+    align-items: flex-end;
+    margin-right: 10px;
+}
+
+.custom-center {
+    margin: auto;
+    width: 210px;
+}
+
+@media screen and (max-width:500px){
+    .custom-center {
+        margin: auto;
+        width: 135px;
+    }
+}
+
+@media screen and (max-width:500px){
+    .border-primary{
+        border-color: white;
+    }  
+}
+
+@import '../../../node_modules/bootstrap/scss/bootstrap.scss';
