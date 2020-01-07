@@ -2,12 +2,10 @@ import * as express from 'express';
 import * as multer from 'multer';
 import * as aws from 'aws-sdk';
 import * as multers3 from 'multer-s3';
+import config from '../../config';
 import { isGuest } from '../../middleware/auth-checkpoints';
 
-aws.config.update({
-    secretAccessKey: 'wD6FoS8pqW2V26xvDz+vSVaAdms2SrIZqKNZXtEs',
-    accessKeyId: 'AKIAIOAYLEE76LJR6GLQ'
-});
+aws.config.update(config.aws);
 const s3 = new aws.S3();
 
 const upload = multer({ 
@@ -23,7 +21,7 @@ const upload = multer({
 
 const router = express.Router();
 
-router.post('/', isGuest, upload.single('image'), (req, res) => {
+router.post('/', upload.single('image'), (req, res) => {
     //insert into database as image url
     console.log(req.file.location);
     console.log(req.body);

@@ -8,5 +8,9 @@ export default {
     },
     auth: {
         secret: process.env.SECRET
+    },
+    aws: {
+        secretAccessKey: process.env.AWS_KEY,
+        accessKeyId: process.env.AWS_ID
     }
 }

@@ -41,15 +41,26 @@ const Register: React.FC<RegisterProps> = props => {
 
     const togglePassword = async (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        let x = document.getElementById(`myInput`);
-        if (x.type === `password`) {
-          x.type = "text";
+        let id = document.getElementById(`togglePassword`) as HTMLInputElement;
+        if (id.type === `password`) {
+          id.type = `text`;
         } else {
-          x.type = "password";
+          id.type = `password`;
         }
-      }
+    }
 
-    const isEnabled = email.length > 0 && password.length > 0 && firstname.length > 0 && lastname.length > 0 && username.length >0;
+    const toggleConfirmPassword = async (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
+        let id = document.getElementById(`toggleConfirmPassword`) as HTMLInputElement;
+        if (id.type === `password`) {
+          id.type = `text`;
+        } else {
+          id.type = `password`;
+        }
+    }
+
+    const isEnabled = email.length > 0 && password.length > 0 && confirmpassword.length > 0 && 
+                        firstname.length > 0 && lastname.length > 0 && username.length >0;
 
     return (
         <>
@@ -99,14 +110,13 @@ const Register: React.FC<RegisterProps> = props => {
                             className="form-control mt-4 p-2" 
                             type="password" 
                             placeholder="password"
-                            id="myInput" 
+                            id="togglePassword" 
                             value={password}
                             onChange={e => setPassword(e.target.value)}
                         />
                          <span className="input-group-btn">
                             <button 
                                 className="btn btn-lg btn-outline-primary reveal mt-4 text-primary" 
-                                id="hover" 
                                 type="button"
                                 onClick={togglePassword}>
                                  <IoMdEye id="hover" />
@@ -119,14 +129,15 @@ const Register: React.FC<RegisterProps> = props => {
                             className="form-control mt-4 p-2" 
                             type="password" 
                             placeholder="confirm password" 
+                            id="toggleConfirmPassword"
                             value={confirmpassword}
                             onChange={e => setConfirmpassword(e.target.value)}
                         />
                          <span className="input-group-btn">
                             <button 
                                 className="btn btn-lg btn-outline-primary reveal mt-4 text-primary" 
-                                id="hover" 
-                                type="button">
+                                type="button"
+                                onClick={toggleConfirmPassword}>
                                  <IoMdEye id="hover" />
                             </button>
                          </span>
