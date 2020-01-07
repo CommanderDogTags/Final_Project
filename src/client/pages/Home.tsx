@@ -33,17 +33,17 @@ const Home: React.FC<HomeProps> = props => {
     return (
         <>
             <div className="row justify-content-center h-100 no-gutters">
-                <div className="col-md-6 my-auto">
+                <div className="w-45 my-auto custom-width">
                     <form className="form-group border rounded border-primary p-5 shadow-sm">
 
                         <h1 
-                            className="text-primary text-center mb-4 mt-1" 
+                            className="text-primary text-center mb-4 mt-1 unselectable" 
                             id="plantstagram">
                             Plantstagram
                         </h1>
 
                         <input 
-                            className="form-control" 
+                            className="form-control p-2" 
                             type="email" 
                             placeholder="email" 
                             value={email} 
@@ -51,7 +51,7 @@ const Home: React.FC<HomeProps> = props => {
                         />
 
                         <input 
-                            className="form-control mt-4" 
+                            className="form-control mt-4 p-2" 
                             type="password" 
                             placeholder="password" 
                             value={password} 
@@ -68,7 +68,7 @@ const Home: React.FC<HomeProps> = props => {
 
                         <hr className="linedivide mt-4"/>
 
-                        <p className="text-center text-muted">Don't have an account?</p>
+                        <p className="text-center text-light unselectable">Don't have an account?</p>
                         <p className="text-primary text-center mb-2"><a href="/register">Sign Up!</a></p>
 
                     </form>

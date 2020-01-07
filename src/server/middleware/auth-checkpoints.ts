@@ -8,8 +8,8 @@ export const tokenMiddleware: RequestHandler = (req: ReqUser, res, next) => {
     })(req, res, next);
 };
 
-export const isAdmin: RequestHandler = (req: ReqUser, res, next) => {
-    if (req.user && req.user.role === 'admin') {
+export const isGuest: RequestHandler = (req: ReqUser, res, next) => {
+    if (req.user && req.user.role === 'guest') {
         return next();
     } else {
         res.sendStatus(401);

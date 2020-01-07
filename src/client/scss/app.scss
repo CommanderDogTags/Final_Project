@@ -4,8 +4,14 @@ $theme-colors: (
     'info': #6789DD,
     'warning': #BB67DD,
     'danger': #DD67C4,
-    'muted': #c5c5c5
+    'light': #c5c5c5
 );
+
+::placeholder {
+    color: #bdbdbd !important;
+}
+
+#hover:hover{color:#ffffff};
 
 #plantstagram {
     font-family: 'Lobster', cursive;
@@ -17,6 +23,15 @@ $theme-colors: (
     h2{
         font-size:35px !important;
     }  
+}
+
+.unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 hr.linedivide{
@@ -44,7 +59,7 @@ hr.linedivide{
 
 .custom-center {
     margin: auto;
-    width: 210px;
+    width: 200px;
 }
 
 @media screen and (max-width:500px){
@@ -58,6 +73,16 @@ hr.linedivide{
     .border-primary{
         border-color: white;
     }  
+}
+
+@media screen and (max-width:500px){
+    .custome-width{
+        width: 25px;
+    }  
+}
+  
+[hidden] {
+    display: none !important;
 }
 
 @import '../../../node_modules/bootstrap/scss/bootstrap.scss';

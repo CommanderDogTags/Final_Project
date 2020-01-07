@@ -8,6 +8,7 @@ const Bottomnavbar: React.FC<BottomnavbarProps> = props => {
         <nav className="nav p-2 shadow fixed-bottom stick-nav">
 
             <NavLink
+                id="hover"
                 exact to="/all"
                 className="btn btn-outline-primary mx-auto my-auto shadow-effect"
                 activeClassName="btn btn-primary mx-auto my-auto shadow-effect text-white">
@@ -15,6 +16,7 @@ const Bottomnavbar: React.FC<BottomnavbarProps> = props => {
             </NavLink>
 
             <NavLink
+                id="hover"
                 exact to="/compose"
                 className="btn btn-outline-primary mx-auto my-auto shadow-effect"
                 activeClassName="btn btn-primary mx-auto my-auto shadow-effect text-white">
@@ -22,6 +24,7 @@ const Bottomnavbar: React.FC<BottomnavbarProps> = props => {
             </NavLink>
 
             <NavLink
+                id="hover"
                 exact to="/search"
                 className="btn btn-outline-primary mx-auto my-auto shadow-effect"
                 activeClassName="btn btn-primary mx-auto my-auto shadow-effect text-white">
@@ -29,6 +32,7 @@ const Bottomnavbar: React.FC<BottomnavbarProps> = props => {
             </NavLink>
 
             <NavLink
+                id="hover"
                 exact to="/profile"
                 className="btn btn-outline-primary mx-auto my-auto shadow-effect"
                 activeClassName="btn btn-primary mx-auto my-auto shadow-effect text-white">

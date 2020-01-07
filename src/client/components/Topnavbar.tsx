@@ -10,21 +10,22 @@ const Topnavbar: React.FC<TopnavbarProps> = props => {
 
     return (
         <>
-        <nav className="navbar p-2 shadow-sm fixed-top sticky-nav">
-            
+            <nav className="navbar p-2 shadow-sm fixed-top sticky-nav">
+
                 <h2
-                    className="text-primary custom-center"
+                    className="text-primary custom-center unselectable"
                     id="plantstagram">
                     Plantstagram
                 </h2>
-           
+
                 <button
+                    id="hover"
                     className="btn btn-outline-primary btn-sm shadow-effect logout"
                     onClick={handleLogout}>
                     Logout
                 </button>
-            
-        </nav>
+                
+            </nav>
         </>
     );
 }
