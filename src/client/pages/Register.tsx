@@ -12,6 +12,10 @@ const Register: React.FC<RegisterProps> = props => {
     const [firstname, setFirstname] = useState<string>('');
     const [lastname, setLastname] = useState<string>('');
     const [username, setUsername] = useState<string>('');
+    const [showPassword, setShowPassword] = useState(false);
+    const [changeEyecon, setChangeEyecon] = useState(false);
+    const [showPasswordConfirm, setShowPasswordConfirm] = useState(false);
+    const [changeEyeconConfirm, setChangeEyeconConfirm] = useState(false);
 
     useEffect(() => {
         if (User && User.role === "guest") {
@@ -39,24 +43,16 @@ const Register: React.FC<RegisterProps> = props => {
         }
     };
 
-    const togglePassword = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    const togglePassword = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        let id = document.getElementById(`togglePassword`) as HTMLInputElement;
-        if (id.type === `password`) {
-          id.type = `text`;
-        } else {
-          id.type = `password`;
-        }
+        setShowPassword(!showPassword);
+        setChangeEyecon(!changeEyecon);
     }
 
-    const toggleConfirmPassword = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    const togglePasswordConfirm = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        let id = document.getElementById(`toggleConfirmPassword`) as HTMLInputElement;
-        if (id.type === `password`) {
-          id.type = `text`;
-        } else {
-          id.type = `password`;
-        }
+        setShowPasswordConfirm(!showPasswordConfirm);
+        setChangeEyeconConfirm(!changeEyeconConfirm);
     }
 
     const isEnabled = email.length > 0 && password.length > 0 && confirmpassword.length > 0 && 
@@ -66,10 +62,11 @@ const Register: React.FC<RegisterProps> = props => {
         <>
         <div className="row justify-content-center h-100 no-gutters">
             <div className="w-45 my-auto custom-width">
-                <form className="form-group border rounded border-primary p-5 shadow-sm">
+                <div className="border rounded border-primary" id="clear-border">
+                <form className="form-group p-5">
 
                     <h1 
-                        className="text-primary text-center mb-4 unselectable" 
+                        className="text-primary text-center mb-4 mt-2 unselectable" 
                         id="plantstagram">
                             Plantstagram
                     </h1>
@@ -108,7 +105,7 @@ const Register: React.FC<RegisterProps> = props => {
                     <div className="input-group">
                         <input 
                             className="form-control mt-4 p-2" 
-                            type="password" 
+                            type={showPassword ? 'text' : 'password'}
                             placeholder="password"
                             id="togglePassword" 
                             value={password}
@@ -119,7 +116,7 @@ const Register: React.FC<RegisterProps> = props => {
                                 className="btn btn-lg btn-outline-primary reveal mt-4 text-primary" 
                                 type="button"
                                 onClick={togglePassword}>
-                                 <IoMdEye id="hover" />
+                                 {changeEyecon ? <IoMdEye id="hover" /> : <IoMdEyeOff id="hover" /> }
                             </button>
                          </span>
                      </div>
@@ -127,7 +124,7 @@ const Register: React.FC<RegisterProps> = props => {
                     <div className="input-group">
                         <input 
                             className="form-control mt-4 p-2" 
-                            type="password" 
+                            type={showPasswordConfirm ? 'text' : 'password'} 
                             placeholder="confirm password" 
                             id="toggleConfirmPassword"
                             value={confirmpassword}
@@ -137,8 +134,8 @@ const Register: React.FC<RegisterProps> = props => {
                             <button 
                                 className="btn btn-lg btn-outline-primary reveal mt-4 text-primary" 
                                 type="button"
-                                onClick={toggleConfirmPassword}>
-                                 <IoMdEye id="hover" />
+                                onClick={togglePasswordConfirm}>
+                                  {changeEyeconConfirm ? <IoMdEye id="hover" /> : <IoMdEyeOff id="hover" /> }
                             </button>
                          </span>
                      </div>
@@ -154,9 +151,10 @@ const Register: React.FC<RegisterProps> = props => {
                     <hr className="linedivide mt-2"/>
 
                     <p className="text-center text-light unselectable">Already have an account?</p>
-                    <p className="text-primary text-center mb-1"><a href="/">Login!</a></p>
+                    <p className="text-primary text-center mb-0"><a href="/">Login!</a></p>
 
                 </form>
+                </div>
             </div>
         </div>
         </>

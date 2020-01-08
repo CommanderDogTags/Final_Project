@@ -7,6 +7,16 @@ $theme-colors: (
     'light': #c5c5c5
 );
 
+#photo-size {
+    height: 250;
+    width: 250;
+}
+
+#photo-padding-top {
+    margin-top: 40;
+    padding-top: 40;
+}
+
 ::placeholder {
     color: #bdbdbd !important;
 }
@@ -52,6 +62,10 @@ hr.linedivide{
     box-shadow: 2px 2px rgb(173, 251, 229), 2px 2px rgb(173, 251, 229);
 }
 
+// .text-shadow {
+//     text-shadow: 1px 1px rgb(0, 0, 0);
+// }
+
 .logout {
     align-items: flex-end;
     margin-right: 10px;
@@ -65,7 +79,14 @@ hr.linedivide{
 @media screen and (max-width:500px){
     .custom-center {
         margin: auto;
-        width: 135px;
+        width: 120px;
+    }
+}
+
+@media screen and (max-width:500px){
+    .background-width {
+        margin: auto;
+        width: 80px;
     }
 }
 
@@ -75,14 +96,39 @@ hr.linedivide{
     }  
 }
 
-@media screen and (max-width:500px){
-    .custome-width{
-        width: 25px;
-    }  
+@media (max-width:500px) {
+    #clear-border
+    {
+      border: 0 solid !important;
+      background: none !important;
+      }
 }
   
 [hidden] {
     display: none !important;
+}
+
+.bg {
+    /* Location of the image */
+    // background-image: url(images/plants1.jpg);
+    
+    /* Background image is centered vertically and horizontally at all times */
+    background-position: center center;
+    
+    /* Background image doesn't tile */
+    background-repeat: no-repeat;
+    
+    /* Background image is fixed in the viewport so that it doesn't move when 
+       the content's height is greater than the image's height */
+    background-attachment: fixed;
+    
+    /* This is what makes the background image rescale based
+       on the container's size */
+    background-size: cover;
+    
+    /* Set a background color that will be displayed
+       while the background image is loading */
+    background-color: #ffffff;
 }
 
 @import '../../../node_modules/bootstrap/scss/bootstrap.scss';

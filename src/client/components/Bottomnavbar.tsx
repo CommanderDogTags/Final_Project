@@ -5,7 +5,7 @@ import { MdHome, MdSearch, MdPerson, MdAdd } from 'react-icons/md';
 const Bottomnavbar: React.FC<BottomnavbarProps> = props => {
 
     return (
-        <nav className="nav p-2 shadow fixed-bottom stick-nav">
+        <nav className="nav p-2 shadow fixed-bottom stick-nav bg-white">
 
             <NavLink
                 id="hover"

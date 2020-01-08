@@ -2,11 +2,15 @@ import * as React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import Topnavbar from '../components/Topnavbar';
 import Bottomnavbar from '../components/Bottomnavbar';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, createRef } from 'react';
 import { json, User } from '../utils/api';
-import { Link } from 'react-router-dom';
+import { MdPlayCircleFilled } from 'react-icons/md';
 
 const Compose: React.FC<ComposeProps> = props => {
+    const fileInput = useRef<HTMLInputElement>();
+    const [fileName, setFileName] = useState(`Choose a Photo`);
+    const [caption, setCaption] = useState('');
+    const [user_id] = useState(User.user_id);
 
     useEffect(() => {
         (async () => {
@@ -20,17 +24,22 @@ const Compose: React.FC<ComposeProps> = props => {
         })();
     }, []);
 
-    const fileInput = useRef<HTMLInputElement>();
-
-    const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        const data = new FormData();
-        data.append('image', fileInput.current.files[0]);
-        data.append('caption', 'lorem ipsum caption test');
-        await fetch('/api/photos', {
+        try {
+            setFileName(fileInput.current.files[0].name);
+            const data = new FormData();
+            data.append('image_path', fileInput.current.files[0]);
+            data.append('caption', caption);
+            data.append('user_id', user_id);
+            await fetch('/api/photos', {
             method: 'POST',
             body: data
-        })
+        });
+        props.history.push(`/all`)
+        } catch (e) {
+            console.log(e)
+        }
     }
 
     return (
@@ -39,20 +48,43 @@ const Compose: React.FC<ComposeProps> = props => {
 
             <div className="row h-100 no-gutters">
                 <div className="container text-center col-md-6 my-auto">
-                    <form className="form-group p-3 border rounded border-primary shadow-sm">
+                    <div className="border rounded border-primary" id="clear-border">
+                    <form className="form-group p-4">
 
-                        <input ref={fileInput} type="file" className="form-control-file" />
+                        <div>
+                            <input
+                                onChange={() => setFileName(fileInput.current.files[0].name)} 
+                                type="file"
+                                className="custom-file-input"
+                                id="customFile"
+                                ref={fileInput}
+                            />
+
+                            <label className="custom-file-label mx-4 mt-5" htmlFor="customFile">
+                                {fileName}
+                            </label>
+
+                        <textarea
+                            rows={5}
+                            placeholder="Add a caption!"
+                            value={caption}
+                            onChange={e => setCaption(e.target.value)}
+                            className="form-control mt-5"
+                        />
+
+                        </div>
 
                         <button
                             id="hover"
-                            onClick={handleClick}
-                            className="btn btn-outline-primary btn-sm shadow-effect mt-3 logout">
+                            onClick={handleSubmit}
+                            className="btn btn-outline-primary btn-sm shadow-effect mt-4">
                             Submit!
                         </button>
                         
                     </form>
+                    </div>
                 </div>
-                </div>
+            </div>
 
                 <Bottomnavbar />
         </>
@@ -61,4 +93,4 @@ const Compose: React.FC<ComposeProps> = props => {
         
 interface ComposeProps extends RouteComponentProps {}
 
-            export default Compose;
+export default Compose;

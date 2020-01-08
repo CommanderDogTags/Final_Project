@@ -24,7 +24,7 @@ const Profile: React.FC<ProfileProps> = props => {
         <>
             <Topnavbar />
             
-            <div className="row h-100">
+            <div className="row h-100 no-gutters">
             <div className="container text-center col-md-6 offset-md-3 my-auto">
                 <p>Page for profile</p>
             </div>

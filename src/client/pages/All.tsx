@@ -4,15 +4,19 @@ import Topnavbar from '../components/Topnavbar';
 import Bottomnavbar from '../components/Bottomnavbar';
 import { useState, useEffect } from 'react';
 import { json, User } from '../utils/api';
-import { Link } from 'react-router-dom';
+import PhotoCard from '../components/PhotoCard';
 
 const All: React.FC<AllProps> = props => {
+    const [photos, setPhotos] = useState<{photo_id:number, username:string, caption:string, image_path:string, _created:string}[]>([]);
 
     useEffect(() => {
         (async () => {
             try {
                 if (!User || User.user_id === null || User.role !== 'guest') {
                     props.history.replace('/', {msg:'You must be logged in to view this page!'});
+                } else {
+                    let photos = await json('/api/photos');
+                    setPhotos(photos);
                 }
             } catch (error) {
                 console.log(error);
@@ -24,10 +28,12 @@ const All: React.FC<AllProps> = props => {
         <>
             <Topnavbar />
             
-            <div className="row h-100">
-            <div className="container text-center col-md-6 offset-md-3 my-auto">
-                <p>Page for all posts</p>
-            </div>
+            <div className="row no-gutters" id="photo-padding-top">
+            {/* <div className="container text-center"> */}
+                {photos.map(photo => (
+                    <PhotoCard key={`blogscard-${photo.photo_id}`} photo={photo} />
+                ))}
+            {/* </div> */}
             </div>
 
             <Bottomnavbar />
@@ -35,6 +41,6 @@ const All: React.FC<AllProps> = props => {
     );
 };
 
-interface AllProps extends RouteComponentProps { }
+interface AllProps extends RouteComponentProps {}
 
 export default All;

@@ -29,57 +29,60 @@ const Home: React.FC<HomeProps> = props => {
     };
 
     const isEnabled = email.length > 0 && password.length > 0;
-    
+
     return (
         <>
+            {/* <div className="container-fluid h-100 fixed" style={{ backgroundImage: `url(images/plants1.jpg)`}}> */}
             <div className="row justify-content-center h-100 no-gutters">
-                <div className="w-45 my-auto custom-width">
-                    <form className="form-group border rounded border-primary p-5 shadow-sm">
+                <div className="w-45 my-auto">
+                    <div className="border rounded border-primary bg-white" id="clear-border">
+                        <form className="form-group p-5">
 
-                        <h1 
-                            className="text-primary text-center mb-4 mt-1 unselectable" 
-                            id="plantstagram">
-                            Plantstagram
+                            <h1
+                                className="text-primary text-center mb-4 mt-2 unselectable"
+                                id="plantstagram">
+                                Plantstagram
                         </h1>
 
-                        <input 
-                            className="form-control p-2" 
-                            type="email" 
-                            placeholder="email" 
-                            value={email} 
-                            onChange={e => setEmail(e.target.value)}
-                        />
+                            <input
+                                className="form-control p-2"
+                                type="email"
+                                placeholder="email"
+                                value={email}
+                                onChange={e => setEmail(e.target.value)}
+                            />
 
-                        <input 
-                            className="form-control mt-4 p-2" 
-                            type="password" 
-                            placeholder="password" 
-                            value={password} 
-                            onChange={e => setPassword(e.target.value)}
-                        />
+                            <input
+                                className="form-control mt-4 p-2"
+                                type="password"
+                                placeholder="password"
+                                value={password}
+                                onChange={e => setPassword(e.target.value)}
+                            />
 
-                        <button 
-                            type="submit" 
-                            className="btn btn-primary text-white form-control mt-4 shadow-sm" 
-                            onClick={handleSubmit}
-                            disabled={!isEnabled}>
-                            Login!
+                            <button
+                                type="submit"
+                                className="btn btn-primary text-white form-control mt-4 shadow-sm"
+                                onClick={handleSubmit}
+                                disabled={!isEnabled}>
+                                Login!
                         </button>
 
-                        <hr className="linedivide mt-4"/>
+                            <hr className="linedivide mt-4" />
 
-                        <p className="text-center text-light unselectable">Don't have an account?</p>
-                        <p className="text-primary text-center mb-2"><a href="/register">Sign Up!</a></p>
+                            <p className="text-center text-light unselectable text-shadow">Don't have an account?</p>
+                            <p className="text-primary text-center mb-0"><a href="/register">Sign Up!</a></p>
+                        </form>
+                    </div>
 
-                    </form>
-
-                    {props.location.state && 
+                    {props.location.state &&
                         <div className="alert alert-danger text-center">
                             {props.location.state.msg} <button className="btn btn-primary text-white btn-sm" onClick={handleDelete}>X</button>
                         </div>}
 
                 </div>
             </div>
+            {/* </div> */}
         </>
     );
 };
