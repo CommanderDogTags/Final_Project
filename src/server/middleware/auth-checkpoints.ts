@@ -16,8 +16,9 @@ export const isGuest: RequestHandler = (req: ReqUser, res, next) => {
     }
 }
 
-interface ReqUser extends Request {
+export interface ReqUser extends Request {
     user: {
         role: string;
+        user_id: number;
     }
 }

@@ -16,12 +16,13 @@ const PhotoCard: React.FC<PhotoCardProps> = props => {
                             image={{
                                 src: props.photo.image_path,
                                 className: 'shadow-effect',
-                                style: { width: '25em'},
+                                // style: { width: '25em'},
                                 id: 'photo-size'
                             }}
                             zoomImage={{
                                 src: props.photo.image_path,
-                                text: props.photo.caption
+                                text: props.photo.caption,
+                                id: 'photo-padding-zoomed'
                             }}
                         />
                     </div>

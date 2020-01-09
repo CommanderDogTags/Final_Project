@@ -7,13 +7,20 @@ import { json, User } from '../utils/api';
 import { Link } from 'react-router-dom';
 
 const Profile: React.FC<ProfileProps> = props => {
+    const [photos, setPhotos] = useState<{photo_id:number, username:string, caption:string, image_path:string, _created:string}[]>([]);
+    const [user, setUser] = useState('');
 
     useEffect(() => {
         (async () => {
             try {
                 if (!User || User.user_id === null || User.role !== 'guest') {
                     props.history.replace('/', {msg:'You must be logged in to view this page!'});
-                }
+                } else {
+                    let photos = await json('/api/photos');
+                    setPhotos(photos);
+                    let user = await json('api/users');
+                    setUser(user);
+                } 
             } catch (error) {
                 console.log(error);
             }

@@ -29,11 +29,9 @@ const All: React.FC<AllProps> = props => {
             <Topnavbar />
             
             <div className="row no-gutters" id="photo-padding">
-            {/* <div className="container text-center"> */}
                 {photos.map(photo => (
                     <PhotoCard key={`photoscard-${photo.photo_id}`} photo={photo} />
                 ))}
-            {/* </div> */}
             </div>
 
             <Bottomnavbar />
