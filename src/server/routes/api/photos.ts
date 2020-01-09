@@ -39,7 +39,7 @@ router.delete('/:photoid', async (req, res) => {
         res.json(await DB.photos.deletePhoto(photoid))
     } catch (e) {
         console.log(e)
-        res.status(500).json('My code sucks.');
+        res.sendStatus(500);
     }
 })
 
@@ -49,6 +49,17 @@ router.get('/', async (req, res, next) => {
         res.send(photos);
     } catch (e) {
         console.log(e);
+        res.sendStatus(500);
+    }
+})
+
+router.put('/:photoid', async (req, res) => {
+	let photo_id = req.params.photoid;
+    let caption = req.body.caption;
+    try {
+        return res.json(await DB.photos.editPhoto(caption, photo_id))
+    } catch (e) {
+        console.log(e)
         res.sendStatus(500);
     }
 })

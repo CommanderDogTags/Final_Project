@@ -8,7 +8,7 @@ const Bottomnavbar: React.FC<BottomnavbarProps> = props => {
         <nav className="nav p-2 shadow fixed-bottom stick-nav bg-white">
 
             <NavLink
-                id="hover"
+                id="hover" 
                 exact to="/all"
                 className="btn btn-outline-primary mx-auto my-auto shadow-effect"
                 activeClassName="btn btn-primary mx-auto my-auto shadow-effect text-white">

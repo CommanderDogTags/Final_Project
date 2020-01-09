@@ -6,8 +6,11 @@ const postPhoto = async (image_path: string, caption: string, user_id: number) =
 
 const deletePhoto = async (photo_id: string) => Query<{}>(`DELETE FROM photos WHERE photo_id =?`, [photo_id]);
 
+const editPhoto = async (caption: string, photo_id: string) => Query<{}>(`UPDATE photos SET caption=? WHERE photo_id=?`, [caption, photo_id]);
+
 export default {
     getAll,
     postPhoto,
-    deletePhoto
+    deletePhoto,
+    editPhoto
 }
