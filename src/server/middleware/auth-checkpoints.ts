@@ -16,6 +16,14 @@ export const isGuest: RequestHandler = (req: ReqUser, res, next) => {
     }
 }
 
+export const isOwner: RequestHandler = (req: ReqUser, res, next) => {
+    if (req.user.user_id === Number(req.params.user_id)) {
+        return next();
+    } else {
+        res.sendStatus(401);
+    }
+}
+
 export interface ReqUser extends Request {
     user: {
         role: string;

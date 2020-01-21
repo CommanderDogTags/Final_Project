@@ -1,6 +1,8 @@
 import { Query } from "../index";
 
-const getAll = () => Query<[]>(`SELECT p.photo_id, u.username, u.role, p.caption, p.image_path, p._created FROM photos p JOIN users u ON u.user_id = p.user_id ORDER BY _created DESC`);
+const getAll = () => Query<[]>(`SELECT p.photo_id, u.username, u.role, u.avatar_path, p.caption, p.image_path, p._created FROM photos p JOIN users u ON u.user_id = p.user_id ORDER BY _created DESC`);
+
+const getSinglePhoto = async (photo_id: string) => Query<{}[]>(`SELECT p.photo_id, u.username, u.role u.avatar_path, p.caption, p.image_path, p._created FROM photos p JOIN users u ON u.user_id = p.user_id WHERE p.photo_id =?`, [photo_id]);
 
 const postPhoto = async (image_path: string, caption: string, user_id: number) => Query<{}>(`INSERT INTO photos (image_path, caption, user_id) VALUES (?)`, [[image_path, caption, user_id]]);
 
@@ -8,9 +10,16 @@ const deletePhoto = async (photo_id: string) => Query<{}>(`DELETE FROM photos WH
 
 const editPhoto = async (caption: string, photo_id: string) => Query<{}>(`UPDATE photos SET caption=? WHERE photo_id=?`, [caption, photo_id]);
 
+const getUsersPhotos = (user_id: number) => Query<{}[]>('SELECT * FROM photos WHERE user_id = ? ORDER BY _created DESC', [user_id]);
+
+const findUsersPhotos = (username: string) => Query<{}[]>('SELECT photos.* FROM photos JOIN users ON users.user_id = photos.user_id WHERE username LIKE ?', [`%${username}%`])
+
 export default {
     getAll,
+    getSinglePhoto, 
     postPhoto,
     deletePhoto,
-    editPhoto
+    editPhoto,
+    getUsersPhotos,
+    findUsersPhotos
 }

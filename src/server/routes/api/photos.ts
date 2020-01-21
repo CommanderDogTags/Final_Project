@@ -1,15 +1,20 @@
-import * as express from 'express';
+
+import { Router } from 'express';
 import * as multer from 'multer';
 import * as aws from 'aws-sdk';
 import * as multers3 from 'multer-s3';
 import config from '../../config';
 import DB from '../../db';
-import { isGuest } from '../../middleware/auth-checkpoints';
+import { isGuest, isOwner } from '../../middleware/auth-checkpoints';
+
+const router = Router();
+
+router.use(isGuest);
 
 aws.config.update(config.aws);
 const s3 = new aws.S3();
 
-const upload = multer({ 
+const upload = multer({
     storage: multers3({
         s3,
         bucket: 'plantstagram-images',
@@ -18,11 +23,40 @@ const upload = multer({
         },
         acl: 'public-read'
     })
- });
+});
 
-const router = express.Router();
+router.get('/search', isGuest, async (req, res) => {
+    try {
+        let photos = await DB.photos.findUsersPhotos(req.query.username);
+        res.json(photos);
+    } catch (e) {
+        console.log(e)
+        res.sendStatus(500)
+    }
+});
 
-router.post('/', upload.single('image_path'), async (req, res) => {
+router.get('/', isGuest, async (req, res, next) => {
+    try {
+        let photos = await DB.photos.getAll();
+        res.send(photos);
+    } catch (e) {
+        console.log(e);
+        res.sendStatus(500);
+    }
+})
+
+router.get('/:id', isGuest, async (req, res, next) => {
+    let id = req.params.photo_id;
+    try {
+        let blog = await DB.photos.getSinglePhoto(id);
+        res.send(blog);
+    } catch (e) {
+        console.log(e);
+        res.sendStatus(500);
+    }
+})
+
+router.post('/', upload.single('image_path'), isGuest, async (req, res) => {
     //insert into database as image url
     try {
         let result = await DB.photos.postPhoto(req.file.location, req.body.caption, req.body.user_id)
@@ -33,7 +67,7 @@ router.post('/', upload.single('image_path'), async (req, res) => {
     }
 });
 
-router.delete('/:photoid', async (req, res) => {
+router.delete('/:photoid', isGuest, async (req, res) => {
     let photoid = req.params.photoid
     try {
         res.json(await DB.photos.deletePhoto(photoid))
@@ -43,18 +77,8 @@ router.delete('/:photoid', async (req, res) => {
     }
 })
 
-router.get('/', async (req, res, next) => {
-    try {
-        let photos = await DB.photos.getAll();
-        res.send(photos);
-    } catch (e) {
-        console.log(e);
-        res.sendStatus(500);
-    }
-})
-
-router.put('/:photoid', async (req, res) => {
-	let photo_id = req.params.photoid;
+router.put('/:photoid', isGuest, async (req, res) => {
+    let photo_id = req.params.photoid;
     let caption = req.body.caption;
     try {
         return res.json(await DB.photos.editPhoto(caption, photo_id))
@@ -63,5 +87,6 @@ router.put('/:photoid', async (req, res) => {
         res.sendStatus(500);
     }
 })
+
 
 export default router;

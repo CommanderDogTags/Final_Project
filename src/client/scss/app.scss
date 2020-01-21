@@ -7,51 +7,70 @@ $theme-colors: (
     'light': #c5c5c5
 );
 
-#photo-size {
-    width: 340;
-    ;
-}
-
-@media screen and (max-width:500px){
-    #photo-size {
-        width: 320 !important;
-    }  
-}
-
-@media screen and (max-width:360px){
-    #photo-size {
-        width: 250 !important;
-    }  
-}
-
-.username {
-    font-weight: bold;
-}
-
-#photo-padding {
-    margin-top: 40;
-    padding-top: 40;
-    margin-bottom: 40;
-    padding-bottom: 40;
-}
-
-#photo-padding-zoomed {
-    margin-top: 10;
-    padding-top: 10;
-    margin-bottom: 10;
-    padding-bottom: 10;
-}
-
 ::placeholder {
     color: #bdbdbd !important;
 }
 
 #hover:hover{color:#ffffff};
 
+.upload-form-text {
+    text-align: left;
+}
+
+.custom-form-width {
+    width: 500px;
+}
+
+#dropdown-hover:hover{color:#67DDBB;};
+
 #plantstagram {
+    font-family: 'Lobster', cursive;
+    font-size: 80px;
+    text-shadow: 2px 2px rgb(173, 251, 229);
+}
+
+#plantstagram-login {
     font-family: 'Lobster', cursive;
     font-size: 50px;
     text-shadow: 2px 2px rgb(173, 251, 229);
+}
+
+    @media screen and (max-width:360px){
+        #plantstagram-login {
+            font-family: 'Lobster', cursive;
+            font-size: 40px;
+            text-shadow: 2px 2px rgb(173, 251, 229);
+        } 
+    }
+
+.username {
+    font-family: 'Lobster', cursive;
+    font-size: 30px;
+    text-shadow: 2px 2px rgb(173, 251, 229);
+}
+
+    @media screen and (max-width:360px){
+        .username {
+            font-family: 'Lobster', cursive;
+            font-size: 20px;
+            text-shadow: 2px 2px rgb(173, 251, 229);
+        } 
+    }
+
+#username {
+    font-family: 'Lobster', cursive;
+    font-size: 50px;
+    text-shadow: 2px 2px rgb(173, 251, 229);
+}
+
+.date-time {
+    margin-top: -10px;
+    font-size: 10px;
+}
+
+.card-footer {
+    background: none !important;
+    border: none !important;
 }
 
 @media screen and (max-width:500px){
@@ -73,36 +92,114 @@ hr.linedivide{
 	border-top: 1px solid #c5c5c5;
 }
 
+.dropdownfontsize {
+    font-size: 20px;
+}
+
+.dropdown-icon {
+    align-items: flex-end;
+    margin-top: 25px;
+    margin-right: 20px;
+}
+
 .iconfontsize {
     font-size: 40px;
 }
 
-@media screen and (max-width:500px){
-    .iconfontsize{
-        font-size:25px !important;
-    }  
-}
+    @media screen and (max-width:500px){
+        .iconfontsize{
+            font-size:25px !important;
+        }  
+    }
 
 .shadow-effect {
     box-shadow: 2px 2px rgb(173, 251, 229), 2px 2px rgb(173, 251, 229);
 }
 
-.logout {
-    align-items: flex-end;
-    margin-right: 10px;
-}
-
 .custom-center {
     margin: auto;
-    width: 200px;
+    width: 420px;
 }
 
-@media screen and (max-width:500px){
-    .custom-center {
-        margin: auto;
-        width: 120px;
+    @media screen and (max-width:500px){
+        .custom-center {
+            margin: auto;
+            width: 190px;
+        }
     }
+
+.custom-center-profile {
+    margin: auto;
+    width: 360px;
 }
+
+    @media screen and (max-width:500px){
+        .custom-center-profile {
+            margin: auto;
+            width: 115px;
+        }
+    }
+
+        @media screen and (max-width:360px){
+            .custom-center-profile {
+                margin: auto;
+                width: 90px;
+            }
+        }
+
+.custom-center-one {
+    margin: auto;
+    width: 480px;
+}
+        
+    @media screen and (max-width:500px){
+        .custom-center-one {
+            margin: auto;
+            width: 230px;
+        }
+    }
+
+        @media screen and (max-width:360px){
+            .custom-center-one {
+                margin: auto;
+                width: 210px;
+            }
+        }
+
+#comment-padding {
+    margin-top: 20;
+    padding-top: 20;
+    margin-bottom: 60;
+    padding-bottom: 60;
+}
+        
+    @media screen and (max-width:500px){
+        #comment-padding {
+            margin-top: 20;
+            padding-top: 20;
+            margin-bottom: 50;
+            padding-bottom: 50;
+        }
+    }
+        
+        @media screen and (max-width:360px){
+            #comment-padding {
+                margin-top: 20;
+                padding-top: 20;
+                margin-bottom: 40;
+                padding-bottom: 40;
+            }
+        }
+
+// .comment-box {
+//     padding-right: 200px;
+// }
+
+// @media screen and (mad-width:500px){
+//     .comment-box {
+//         padding-right: 200px;
+//     }
+// }
 
 @media screen and (max-width:500px){
     .background-width {
@@ -129,4 +226,92 @@ hr.linedivide{
     display: none !important;
 }
 
+.container-photo {
+    position: relative;
+    width: 50%;
+  }
+
+  .container-photo .btn {
+    position: absolute;
+    top: 20%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+ul {
+    text-align: center;
+    display: inline;
+    margin: 0;
+    // padding: 15px 4px 17px 0;
+    list-style: none;
+  }
+  
+  ul li {
+    font: bold 12px/18px sans-serif;
+    display: inline-block;
+    margin-right: -4px;
+    position: relative;
+    cursor: pointer;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+  }
+  
+  ul li:hover {
+    // background: #555;
+    color: #67DDBB;
+  }
+  
+  ul li ul {
+    padding: 0;
+    position: absolute;
+    top: 45px;
+    left: 0;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transiton: opacity 0.2s;
+    -transition: opacity 0.2s;
+  }
+  
+  ul>li:last-child ul {
+    right: 4px;
+    left: auto;
+  }
+  
+  ul li ul li {
+    background: rgb(255, 255, 255);
+    display: block;
+    color: #67DDBB;
+    
+  }
+  
+  ul li ul li:hover {
+    background: rgb(255, 255, 255);
+  }
+  
+  ul li:hover ul {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+  }
+
+@import './photo.scss';
+
+@import './avatar.scss';
+
 @import '../../../node_modules/bootstrap/scss/bootstrap.scss';
+

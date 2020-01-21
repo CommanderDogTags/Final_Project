@@ -1,0 +1,81 @@
+.avatar-size {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    margin-left: 20px;
+    margin-right: -90px;
+    object-fit: cover;
+}
+
+    @media screen and (max-width:500px){
+        .avatar-size {
+            height: 60px;
+            width: 60px;
+            border-radius: 50%;
+            margin-left: 20px;
+            margin-right: -55px;
+            object-fit: cover;
+        }
+    }
+
+        @media screen and (max-width:360px){
+            .avatar-size {
+                height: 40px;
+                width: 40px;
+                border-radius: 50%;
+                margin-left: 20px;
+                object-fit: cover;
+            }
+        }
+        
+
+.avatar-size-single-photo {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    margin-left: 10px;
+    margin-right: 0px;
+    object-fit: cover;
+}
+        
+    @media screen and (max-width:500px){
+        .avatar-size-single-photo {
+            height: 70px;
+            width: 70px;
+            border-radius: 50%;
+            margin-left: 0px;
+            margin-right: 0px;
+            object-fit: cover;
+        }
+    }
+        
+        @media screen and (max-width:360px){
+            .avatar-size-single-photo {
+                height: 50px;
+                width: 50px;
+                border-radius: 50%;
+                margin-left: 0px;
+                margin-right: 0px;
+                object-fit: cover;
+            }
+        }
+
+.avatar-size-comment {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    margin-left: 0px;
+    margin-right: 0px;
+    object-fit: cover;
+}
+
+    @media screen and (max-width:500px){
+        .avatar-size-comment {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            margin-left: 0px;
+            margin-right: 0px;
+            object-fit: cover;
+        }
+    }

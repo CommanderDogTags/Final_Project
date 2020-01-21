@@ -6,37 +6,41 @@ import { useState, useEffect, useRef } from 'react';
 import { json, User } from '../utils/api';
 import { MdPlayCircleFilled } from 'react-icons/md';
 
-const Compose: React.FC<ComposeProps> = props => {
+const EditAvatar: React.FC<EditAvatarProps> = props => {
     const fileInput = useRef<HTMLInputElement>();
-    const [fileName, setFileName] = useState(`Choose a Photo`);
-    const [caption, setCaption] = useState('');
+    const [fileName, setFileName] = useState(`Choose an Avatar`);
     const [user_id] = useState(User.user_id);
+    const [user, setUser] = useState<{user_id: string}>({
+        user_id: ''
+    });
 
     useEffect(() => {
         (async () => {
             try {
                 if (!User || User.user_id === null || User.role !== 'guest') {
                     props.history.replace('/', { msg: 'You must be logged in to view this page!' });
-                }
+                } else {
+                    let [user] = await json('/api/users');
+                    setUser(user);
+                } 
             } catch (error) {
                 console.log(error);
             }
         })();
     }, []);
 
-    const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    const handleEdit = async (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
         try {
             setFileName(fileInput.current.files[0].name);
             const data = new FormData();
-            data.append('image_path', fileInput.current.files[0]);
-            data.append('caption', caption);
+            data.append('avatar_path', fileInput.current.files[0]);
             data.append('user_id', user_id);
-            await fetch('/api/photos', {
-            method: 'POST',
-            body: data
-        });
-        props.history.push(`/all`)
+            await fetch('/api/users/avatar', {
+                method: 'PUT',
+                body: data
+            })
+            props.history.push(`/profile`)
         } catch (e) {
             console.log(e)
         }
@@ -49,13 +53,12 @@ const Compose: React.FC<ComposeProps> = props => {
             <div className="row h-100 no-gutters">
                 <div className="container text-center col-md-6 my-auto">
                     <div className="border rounded border-primary" id="clear-border">
-                    <form className="form-group p-4">
+                        <form className="form-group p-4">
 
-                        <div>
                             <input
-                                onChange={() => setFileName(fileInput.current.files[0].name)} 
+                                onChange={() => setFileName(fileInput.current.files[0].name)}
                                 type="file"
-                                className="custom-file-input"
+                                className="custom-file-input mb-4"
                                 id="customFile"
                                 ref={fileInput}
                             />
@@ -64,33 +67,23 @@ const Compose: React.FC<ComposeProps> = props => {
                                 {fileName}
                             </label>
 
-                        <textarea
-                            rows={5}
-                            placeholder="Add a caption!"
-                            value={caption}
-                            onChange={e => setCaption(e.target.value)}
-                            className="form-control mt-5"
-                        />
-
-                        </div>
-
-                        <button
-                            id="hover"
-                            onClick={handleSubmit}
-                            className="btn btn-outline-primary btn-sm shadow-effect mt-4">
-                            Submit!
+                            <button
+                                id="hover"
+                                onClick={handleEdit}
+                                className="btn btn-outline-primary btn-sm shadow-effect mt-4">
+                                Submit!
                         </button>
-                        
-                    </form>
+
+                        </form>
                     </div>
                 </div>
             </div>
 
-                <Bottomnavbar />
+            <Bottomnavbar />
         </>
-            );
-        };
-        
-interface ComposeProps extends RouteComponentProps {}
+    );
+};
 
-export default Compose;
+interface EditAvatarProps extends RouteComponentProps { }
+
+export default EditAvatar;

@@ -4,7 +4,8 @@ export let Token: string = localStorage.getItem('token') || null
 // checks if a user exists and checks what their id and role are
 export let User: any = {
     user_id: localStorage.getItem('user_id') || null,
-    role: localStorage.getItem('role') || null
+    role: localStorage.getItem('role') || null,
+    token: localStorage.getItem('token') || null
 };
 
 export const json = async (uri: string, method: string = 'GET', body?: {}) => {

@@ -7,7 +7,7 @@ import { json, User } from '../utils/api';
 import PhotoCard from '../components/PhotoCard';
 
 const All: React.FC<AllProps> = props => {
-    const [photos, setPhotos] = useState<{photo_id:number, username:string, caption:string, image_path:string, _created:string}[]>([]);
+    const [photos, setPhotos] = useState<{photo_id:number, username:string, caption:string, image_path:string, avatar_path:string,  _created:string}[]>([]);
 
     useEffect(() => {
         (async () => {

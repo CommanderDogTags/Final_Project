@@ -1,14 +1,19 @@
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
-import Topnavbar from '../components/Topnavbar';
+import ProfileNavbar from '../components/ProfileNavbar';
 import Bottomnavbar from '../components/Bottomnavbar';
 import { useState, useEffect } from 'react';
 import { json, User } from '../utils/api';
-import { Link } from 'react-router-dom';
+import ProfilePhotoCard from '../components/ProfilePhotoCard';
 
 const Profile: React.FC<ProfileProps> = props => {
-    const [photos, setPhotos] = useState<{photo_id:number, username:string, caption:string, image_path:string, _created:string}[]>([]);
-    const [user, setUser] = useState('');
+    const [photos, setPhotos] = useState<{photo_id:number, username:string, caption:string, image_path:string, avatar_path:string, _created:string}[]>([]);
+    const [user, setUser] = useState<{username:string, avatar_path:string, role: string, user_id: number}>({
+        username: '',
+        avatar_path: '',
+        role: '',
+        user_id: 0
+    });
 
     useEffect(() => {
         (async () => {
@@ -16,10 +21,9 @@ const Profile: React.FC<ProfileProps> = props => {
                 if (!User || User.user_id === null || User.role !== 'guest') {
                     props.history.replace('/', {msg:'You must be logged in to view this page!'});
                 } else {
-                    let photos = await json('/api/photos');
-                    setPhotos(photos);
-                    let user = await json('api/users');
+                    let [user, photos] = await json('/api/users');
                     setUser(user);
+                    setPhotos(photos);
                 } 
             } catch (error) {
                 console.log(error);
@@ -29,12 +33,12 @@ const Profile: React.FC<ProfileProps> = props => {
 
     return (
         <>
-            <Topnavbar />
+            <ProfileNavbar user={user} />
             
-            <div className="row h-100 no-gutters">
-            <div className="container text-center col-md-6 offset-md-3 my-auto">
-                <p>Page for profile</p>
-            </div>
+            <div className="row no-gutters" id="photo-padding">
+                {photos.map(photo => (
+                    <ProfilePhotoCard key={`profilephotoscard-${photo.photo_id}`} photo={photo} />
+                ))}
             </div>
 
             <Bottomnavbar />
@@ -42,6 +46,6 @@ const Profile: React.FC<ProfileProps> = props => {
     );
 };
 
-interface ProfileProps extends RouteComponentProps { }
+interface ProfileProps extends RouteComponentProps {  }
 
 export default Profile;

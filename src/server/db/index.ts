@@ -15,9 +15,11 @@ export const Query = <T = any>(query: string, values?: any) => {
 import tokens from './queries/tokens';
 import users from './queries/users';
 import photos from './queries/photos';
+import comments from './queries/comments';
 
 export default {
 	tokens,
 	users,
-	photos
+	photos,
+	comments
 }

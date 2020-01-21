@@ -40,9 +40,9 @@ const Home: React.FC<HomeProps> = props => {
 
                             <h1
                                 className="text-primary text-center mb-4 mt-2 unselectable"
-                                id="plantstagram">
+                                id="plantstagram-login">
                                 Plantstagram
-                        </h1>
+                            </h1>
 
                             <input
                                 className="form-control p-2"

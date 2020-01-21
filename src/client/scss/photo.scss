@@ -1,0 +1,92 @@
+#photo-size {
+    width: 450;
+    height: 450;
+    object-fit: cover;
+    object-position: 100% 0;
+}
+
+    @media screen and (max-width:500px){
+        #photo-size {
+            width: 320 !important;
+            height: 320 !important;
+            object-fit: cover;
+        }  
+    }
+
+        @media screen and (max-width:360px){
+            #photo-size {
+                width: 250 !important;
+                height: 250 !important;
+                object-fit: cover;
+            }  
+        }
+
+#single-photo-size {
+    width: 650;
+    height: 550;
+    object-fit: contain;
+}
+
+    @media screen and (max-width:500px){
+        #single-photo-size {
+            width: 350;
+            height: 450;
+            object-fit: contain;
+        }
+    }
+
+        @media screen and (max-width:360px){
+            #single-photo-size {
+                width: 250;
+                height: 350;
+                object-fit: contain;
+            }
+        }
+
+#photo-padding {
+    margin-top: 70;
+    padding-top: 70;
+    margin-bottom: 50;
+    padding-bottom: 50;
+}
+        
+    @media screen and (max-width:500px){
+        #photo-padding {
+            margin-top: 35 !important;
+            padding-top: 35 !important;
+            margin-bottom: 35;
+            padding-bottom: 35;
+        }  
+    }
+
+#single-photo-padding {
+    margin-top: 80;
+    padding-top: 80;
+    margin-bottom: 10;
+    padding-bottom: 10;
+}
+
+    @media screen and (max-width:500px){
+        #single-photo-padding {
+            margin-top: 60;
+            padding-top: 60;
+            margin-bottom: 10;
+            padding-bottom: 10;
+        }
+    }
+
+        @media screen and (max-width:360px){
+            #single-photo-padding {
+                margin-top: 40;
+                padding-top: 40;
+                margin-bottom: 10;
+                padding-bottom: 10;
+            }
+        }
+
+#photo-padding-zoomed {
+    margin-top: 40;
+    padding-top: 40;
+    margin-bottom: 40;
+    padding-bottom: 40;
+}

@@ -67,7 +67,7 @@ const Register: React.FC<RegisterProps> = props => {
 
                     <h1 
                         className="text-primary text-center mb-4 mt-2 unselectable" 
-                        id="plantstagram">
+                        id="plantstagram-login">
                             Plantstagram
                     </h1>
 

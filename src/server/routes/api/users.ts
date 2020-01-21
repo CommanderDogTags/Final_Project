@@ -24,10 +24,8 @@ const router = express.Router();
 
 router.put('/avatar', upload.single('avatar_path'), async (req: ReqUser, res) => {
     try {
-        let avatar_path = req.file.location;
-        let user_id = req.user.user_id;
-        let result = await DB.users.updateAvatar(avatar_path, user_id)
-        res.json(avatar_path)
+        let result = await DB.users.updateAvatar(req.file.location, req.body.user_id)
+        res.json(result)
     } catch (e) {
         console.log(e)
         res.sendStatus(500)
@@ -38,7 +36,8 @@ router.get('/', async (req: ReqUser, res, next) => {
     let user_id = req.user.user_id;
     try {
         let users = await DB.users.getUser(user_id);
-        res.send(users);
+        let usersPhotos = await DB.photos.getUsersPhotos(user_id);
+        res.send([...users, [...usersPhotos]]);
     } catch (e) {
         console.log(e);
         res.sendStatus(500);
