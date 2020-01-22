@@ -8,10 +8,6 @@ const ProfileNavbar: React.FC<ProfileNavbarProps> = props => {
         window.location.replace('/');
     };
 
-    const handleDropdown = async (e: React.MouseEvent<HTMLButtonElement>) => {
-        document.getElementById("myDropdown").classList.toggle("show");
-    };
-
     return (
         <>
             <nav className="navbar p-2 shadow-sm fixed-top sticky-nav bg-white">

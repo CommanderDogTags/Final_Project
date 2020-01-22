@@ -29,6 +29,7 @@ const All: React.FC<AllProps> = props => {
                 if (!User || User.user_id === null || User.role !== 'guest') {
                     props.history.replace('/', { msg: 'You must be logged in to view this page!' });
                 } else {
+                    window.scrollTo(0, 0)
                     setPhoto(props.location.state.photo);
                     let user = await json('/api/users');
                     setUser(user);
@@ -90,10 +91,11 @@ const All: React.FC<AllProps> = props => {
 
                         <button
                             type="submit"
-                            className="btn btn-primary text-white form-control mt-4 shadow-sm"
+                            className="btn btn-outline-primary shadow-effect form-control mt-4"
+                            id="hover"
                             onClick={handleSubmit}
                             disabled={!isEnabled}>
-                            Add Comment!
+                            Comment!
                         </button>
 
                     </form>

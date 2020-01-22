@@ -10,8 +10,9 @@ const EditAvatar: React.FC<EditAvatarProps> = props => {
     const fileInput = useRef<HTMLInputElement>();
     const [fileName, setFileName] = useState(`Choose an Avatar`);
     const [user_id] = useState(User.user_id);
-    const [user, setUser] = useState<{user_id: string}>({
-        user_id: ''
+    const [user, setUser] = useState<{ user_id: string, avatar_path: string }>({
+        user_id: '',
+        avatar_path: ''
     });
 
     useEffect(() => {
@@ -22,7 +23,7 @@ const EditAvatar: React.FC<EditAvatarProps> = props => {
                 } else {
                     let [user] = await json('/api/users');
                     setUser(user);
-                } 
+                }
             } catch (error) {
                 console.log(error);
             }
@@ -52,33 +53,34 @@ const EditAvatar: React.FC<EditAvatarProps> = props => {
 
             <div className="row h-100 no-gutters">
                 <div className="container text-center col-md-6 my-auto">
-                    <div className="border rounded border-primary" id="clear-border">
-                        <form className="form-group p-4">
+                    <form className="form-group p-4">
 
-                            <input
-                                onChange={() => setFileName(fileInput.current.files[0].name)}
-                                type="file"
-                                className="custom-file-input mb-4"
-                                id="customFile"
-                                ref={fileInput}
-                            />
+                        <input
+                            onChange={() => setFileName(fileInput.current.files[0].name)}
+                            type="file"
+                            className="custom-file-input mb-4"
+                            id="customFile"
+                            ref={fileInput}
+                        />
 
-                            <label className="custom-file-label mx-4 mt-5 upload-form-text" htmlFor="customFile">
-                                {fileName}
-                            </label>
+                        <label className="custom-file-label mx-4 mt-5 upload-form-text" htmlFor="customFile">
+                            {fileName}
+                        </label>
 
-                            <button
-                                id="hover"
-                                onClick={handleEdit}
-                                className="btn btn-outline-primary btn-sm shadow-effect mt-4">
-                                Submit!
+                        <button
+                            id="hover"
+                            onClick={handleEdit}
+                            className="btn btn-outline-primary btn-sm shadow-effect mt-4">
+                            Submit!
                         </button>
 
-                        </form>
-                    </div>
+                    </form>
+
+                        <img src={user.avatar_path} className="avatar-size-edit" />
+                        <p className="text-primary unselectable">Current Avatar</p>
+
                 </div>
             </div>
-
             <Bottomnavbar />
         </>
     );

@@ -13,6 +13,27 @@ $theme-colors: (
 
 #hover:hover{color:#ffffff};
 
+#button-hover:hover{
+    background-color:  #67DDBB;
+    color: white;
+}
+
+.back-button-padding {
+    margin-left: 10px;
+    padding-left: 10px;
+    margin-right: -40px;
+    padding-right: -40px;
+}
+
+    @media screen and (max-width:500px){
+        .back-button-padding {
+            margin-left: 10px;
+            padding-left: 10px;
+            margin-right: -50px;
+            padding-right: -50px;
+        }
+    }
+
 .upload-form-text {
     text-align: left;
 }
@@ -118,7 +139,7 @@ hr.linedivide{
 
 .custom-center {
     margin: auto;
-    width: 420px;
+    width: 430px;
 }
 
     @media screen and (max-width:500px){

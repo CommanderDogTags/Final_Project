@@ -9,8 +9,6 @@ import { isGuest, isOwner } from '../../middleware/auth-checkpoints';
 
 const router = Router();
 
-router.use(isGuest);
-
 aws.config.update(config.aws);
 const s3 = new aws.S3();
 
@@ -25,7 +23,7 @@ const upload = multer({
     })
 });
 
-router.get('/search', isGuest, async (req, res) => {
+router.get('/search', async (req, res) => {
     try {
         let photos = await DB.photos.findUsersPhotos(req.query.username);
         res.json(photos);
@@ -35,7 +33,7 @@ router.get('/search', isGuest, async (req, res) => {
     }
 });
 
-router.get('/', isGuest, async (req, res, next) => {
+router.get('/', async (req, res, next) => {
     try {
         let photos = await DB.photos.getAll();
         res.send(photos);
@@ -45,7 +43,7 @@ router.get('/', isGuest, async (req, res, next) => {
     }
 })
 
-router.get('/:id', isGuest, async (req, res, next) => {
+router.get('/:id', async (req, res, next) => {
     let id = req.params.photo_id;
     try {
         let blog = await DB.photos.getSinglePhoto(id);
@@ -67,7 +65,7 @@ router.post('/', upload.single('image_path'), isGuest, async (req, res) => {
     }
 });
 
-router.delete('/:photoid', isGuest, async (req, res) => {
+router.delete('/:photoid', async (req, res) => {
     let photoid = req.params.photoid
     try {
         res.json(await DB.photos.deletePhoto(photoid))
@@ -77,7 +75,7 @@ router.delete('/:photoid', isGuest, async (req, res) => {
     }
 })
 
-router.put('/:photoid', isGuest, async (req, res) => {
+router.put('/:photoid', async (req, res) => {
     let photo_id = req.params.photoid;
     let caption = req.body.caption;
     try {

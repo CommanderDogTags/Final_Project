@@ -1,7 +1,5 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import * as moment from 'moment';
-import ImageZoom from 'react-medium-image-zoom';
 
 const PhotoCard: React.FC<PhotoCardProps> = props => {
 
@@ -13,6 +11,10 @@ const PhotoCard: React.FC<PhotoCardProps> = props => {
                         <Link to={{pathname: `/one/${props.photo.photo_id}`, state: {photo: props.photo}}} >
                             <img id='photo-size' src={props.photo.image_path} />
                         </Link>
+                        <div className="row justify-content-center">
+                            <img src={props.photo.avatar_path} className="img-left avatar-size-results mt-2" />
+                            <p className="mt-3 mx-2 unselectable">{props.photo.username}</p>
+                        </div>
                     </div>
                 </div>
             </div>

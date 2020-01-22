@@ -9,6 +9,7 @@ import { MdPlayCircleFilled } from 'react-icons/md';
 const EditPhoto: React.FC<EditPhotoProps> = props => {
     const [photo, setPhoto] = useState<{photo_id:number, caption:string, image_path:string}[]>([{photo_id:0, caption:'', image_path:''}]);
     const [caption, setCaption] = useState<string>('');
+    const [imagepath, setImagepath] = useState<string>('');
 
     useEffect(() => {
         (async () => {
@@ -17,6 +18,7 @@ const EditPhoto: React.FC<EditPhotoProps> = props => {
                     props.history.replace('/', {msg:'You must be logged in to view this page!'});
                 } else {
                     setPhoto(props.location.state.photo);
+                    setImagepath(props.location.state.photo.image_path)
                     setCaption(props.location.state.photo.caption)
                 }
             } catch (error) {
@@ -42,23 +44,27 @@ const EditPhoto: React.FC<EditPhotoProps> = props => {
 
             <div className="row h-100 no-gutters">
                 <div className="container text-center col-md-6 my-auto">
-                    <div className="border rounded border-primary" id="clear-border">
                         <form className="form-group p-4">
 
-                        <label className="text mt-2">Edit this caption:</label>
+                            <img src={imagepath} id="edit-photo-size"/>
+
                             <textarea
-                                rows={8}
+                                rows={6}
                                 defaultValue={caption}
                                 onChange={e => setCaption(e.target.value)}
                                 className="form-control my-1"
-                        />
+                            />
 
-                        <button type="submit" className="btn rounded btn-outline-primary mt-2" onClick={handleEdit} id="hover">
+                        <button 
+                            type="submit" 
+                            className="btn rounded btn-outline-primary shadow-effect mt-2" 
+                            onClick={handleEdit} 
+                            id="hover"
+                        >
                             Edit!
                         </button>
 
                         </form>
-                    </div>
                 </div>
             </div>
 

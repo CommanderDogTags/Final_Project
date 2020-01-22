@@ -68,7 +68,7 @@ const ProfilePhotoCard: React.FC<ProfilePhotoCardProps> = props => {
                         </Link>
                         <div className="card-footer">
                             <button 
-                                className="btn rounded btn-outline-primary btn-sm mt-1 mx-1"
+                                className="btn rounded btn-outline-primary shadow-effect btn-sm mt-1 mx-1"
                                 id="hover"
                                 onClick={handleDelete}
                             >
@@ -93,7 +93,7 @@ const ProfilePhotoCard: React.FC<ProfilePhotoCardProps> = props => {
 
                             <Link 
                                 to={{pathname: `/editphoto/${props.photo.photo_id}`, state: {photo: props.photo}}}
-                                className="btn rounded btn-outline-primary btn-sm mt-1 mx-1"
+                                className="btn rounded btn-outline-primary shadow-effect btn-sm mt-1 mx-1"
                                 id="hover"
                             >
                                 Edit Caption

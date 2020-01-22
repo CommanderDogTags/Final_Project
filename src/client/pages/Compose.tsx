@@ -48,7 +48,6 @@ const Compose: React.FC<ComposeProps> = props => {
 
             <div className="row h-100 no-gutters">
                 <div className="container text-center col-md-6 my-auto">
-                    <div className="border rounded border-primary" id="clear-border">
                     <form className="form-group p-4">
 
                         <div>
@@ -82,7 +81,6 @@ const Compose: React.FC<ComposeProps> = props => {
                         </button>
                         
                     </form>
-                    </div>
                 </div>
             </div>
 
