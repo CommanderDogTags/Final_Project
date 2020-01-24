@@ -10,6 +10,9 @@ import Search from './pages/Search';
 import Results from './pages/Results';
 import EditAvatar from './pages/EditAvatar';
 import EditPhoto from './pages/EditPhoto';
+import PlantSearch from './pages/PlantSearch';
+import MyPlants from './pages/MyPlants';
+import PlantResults from './pages/PlantResults';
 
 const App: React.FC<IAppProps> = props => {
 	return (
@@ -25,6 +28,9 @@ const App: React.FC<IAppProps> = props => {
 				<Route exact path="/results" component={Results} />
 				<Route exact path="/editavatar" component={EditAvatar} />
 				<Route exact path="/editphoto/:photo_id" component={EditPhoto} />
+				<Route exact path="/plantsearch" component={PlantSearch} />
+				<Route exact path="/myplants" component={MyPlants} />
+				<Route exact path="/plantresults" component={PlantResults} />
 			</Switch>
 		</Router>
 	);

@@ -100,6 +100,22 @@
         }  
     }
 
+#profile-photo-padding {
+    margin-top: 15;
+    padding-top: 15;
+    margin-bottom: 50;
+    padding-bottom: 50;
+}
+            
+    @media screen and (max-width:500px){
+        #profile-photo-padding {
+            margin-top: 10 !important;
+            padding-top: 10 !important;
+            margin-bottom: 35;
+            padding-bottom: 35;
+        }  
+    }
+
 #single-photo-padding {
     margin-top: 80;
     padding-top: 80;

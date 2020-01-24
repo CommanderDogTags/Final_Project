@@ -54,7 +54,7 @@ router.get('/:id', async (req, res, next) => {
     }
 })
 
-router.post('/', upload.single('image_path'), isGuest, async (req, res) => {
+router.post('/', upload.single('image_path'), async (req, res) => {
     //insert into database as image url
     try {
         let result = await DB.photos.postPhoto(req.file.location, req.body.caption, req.body.user_id)

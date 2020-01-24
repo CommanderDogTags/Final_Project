@@ -12,5 +12,8 @@ export default {
     aws: {
         secretAccessKey: process.env.AWS_KEY,
         accessKeyId: process.env.AWS_ID
+    },
+    trefle: {
+        apiKey: process.env.TREFLE_KEY
     }
 }

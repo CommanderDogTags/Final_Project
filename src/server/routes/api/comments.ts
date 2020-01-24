@@ -1,6 +1,6 @@
 import * as express from 'express';
-import config from '../../config';
 import DB from '../../db';
+import config from '../../config';
 import { isGuest, ReqUser } from '../../middleware/auth-checkpoints';
 
 const router = express.Router();

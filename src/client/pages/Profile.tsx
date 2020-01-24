@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
-import ProfileNavbar from '../components/ProfileNavbar';
-import Bottomnavbar from '../components/Bottomnavbar';
 import { useState, useEffect } from 'react';
 import { json, User } from '../utils/api';
+import ProfileNavbar from '../components/ProfileNavbar';
+import ProfileSwitchBar from '../components/ProfileSwitchBar';
+import Bottomnavbar from '../components/Bottomnavbar';
 import ProfilePhotoCard from '../components/ProfilePhotoCard';
 
 const Profile: React.FC<ProfileProps> = props => {
@@ -34,8 +35,10 @@ const Profile: React.FC<ProfileProps> = props => {
     return (
         <>
             <ProfileNavbar user={user} />
+
+            <ProfileSwitchBar />
             
-            <div className="row no-gutters" id="photo-padding">
+            <div className="row no-gutters" id="profile-photo-padding">
                 {photos.map(photo => (
                     <ProfilePhotoCard key={`profilephotoscard-${photo.photo_id}`} photo={photo} />
                 ))}

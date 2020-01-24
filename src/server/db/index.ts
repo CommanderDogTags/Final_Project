@@ -16,10 +16,12 @@ import tokens from './queries/tokens';
 import users from './queries/users';
 import photos from './queries/photos';
 import comments from './queries/comments';
+import plants from './queries/plants';
 
 export default {
 	tokens,
 	users,
 	photos,
-	comments
+	comments,
+	plants
 }

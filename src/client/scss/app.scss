@@ -18,6 +18,32 @@ $theme-colors: (
     color: white;
 }
 
+.switch-bar {
+    margin-top: 116px;
+    padding-top: 116px;
+    // box-shadow: inset 0px 8px 8px -10px #CCC,
+    // 0px 3px 3px 0px rgb(240, 240, 240)
+}
+
+    @media screen and (max-width:500px){
+        .switch-bar {
+            margin-top: 76px;
+            padding-top: 76px;
+        }
+    }
+
+.plant-search-bar {
+    margin-top: 40px;
+    padding-top: 40px;
+}
+
+@media screen and (max-width:500px){
+    .plant-search-bar {
+        margin-top: 20px;
+        padding-top: 20px;
+    }
+}
+
 .back-button-padding {
     margin-left: 10px;
     padding-left: 10px;

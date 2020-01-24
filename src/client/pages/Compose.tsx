@@ -33,8 +33,8 @@ const Compose: React.FC<ComposeProps> = props => {
             data.append('caption', caption);
             data.append('user_id', user_id);
             await fetch('/api/photos', {
-            method: 'POST',
-            body: data
+                method: 'POST',
+                body: data
         });
         props.history.push(`/all`)
         } catch (e) {

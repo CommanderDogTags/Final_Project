@@ -35,7 +35,7 @@ const Search: React.FC<SearchProps> = props => {
         props.history.push('/results', { query, results });
     }
 
-    const queryKeyPress = async (e:any) => {
+    const queryKeyPress = async (e: React.KeyboardEvent) => {
         if (e.key === "Enter") {
             let results = await json(`/api/photos/search?username=${query}`)
             console.log(results);
