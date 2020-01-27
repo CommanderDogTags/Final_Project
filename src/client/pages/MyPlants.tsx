@@ -2,14 +2,16 @@ import * as React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { json, User } from '../utils/api';
-import { MdSearch } from 'react-icons/md';
+import { MdSearch, MdSettingsApplications } from 'react-icons/md';
 import ProfileNavbar from '../components/ProfileNavbar';
 import ProfileSwitchBar from '../components/ProfileSwitchBar';
 import Bottomnavbar from '../components/Bottomnavbar';
+import PlantCard from '../components/PlantCard';
 
 const MyPlants: React.FC<MyPlantsProps> = props => {
     const [query, setQuery] = useState('')
     const [results, setResults] = useState<SearchResult[]>([])
+    const [plants, setPlants] = useState<Plants[]>([]);
     const [user, setUser] = useState<{username:string, avatar_path:string, role: string, user_id: number}>({
         username: '',
         avatar_path: '',
@@ -25,6 +27,8 @@ const MyPlants: React.FC<MyPlantsProps> = props => {
                 } else {
                     let [user] = await json('/api/users');
                     setUser(user);
+                    let plants = await json(`/api/plants/${User.user_id}`);
+                    setPlants(plants);
                     if (props.location.state?.query.length > 0){
                         setQuery(props.location.state.query)
                     } 
@@ -84,6 +88,13 @@ const MyPlants: React.FC<MyPlantsProps> = props => {
 
                 </div>
 
+                
+                <div className="row no-gutters" id="plant-card-padding">
+                    {plants.map(plant => (
+                        <PlantCard key={`plantcard-${plant.trefle_id}`} plants={plant} />
+                    ))}
+                </div>
+
             <Bottomnavbar />
         </>
     );
@@ -96,6 +107,14 @@ interface SearchResult {
     slug: string,
     scientific_name: string,
     common_name: string
+}
+
+interface Plants {
+    plant_id: number,
+    trefle_id: number,
+    common_name: string,
+    scientific_name: string,
+    _created: string
 }
 
 export default MyPlants;

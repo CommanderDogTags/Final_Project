@@ -33,16 +33,16 @@ $theme-colors: (
     }
 
 .plant-search-bar {
-    margin-top: 40px;
-    padding-top: 40px;
+    margin-top: 30px;
+    padding-top: 30px;
 }
 
-@media screen and (max-width:500px){
-    .plant-search-bar {
-        margin-top: 20px;
-        padding-top: 20px;
+    @media screen and (max-width:500px){
+        .plant-search-bar {
+            margin-top: 10px;
+            padding-top: 10px;
+        }
     }
-}
 
 .back-button-padding {
     margin-left: 10px;
@@ -237,6 +237,22 @@ hr.linedivide{
                 padding-bottom: 40;
             }
         }
+
+#plant-card-padding {
+    margin-top: 15;
+    padding-top: 15;
+    margin-bottom: 50;
+    padding-bottom: 50;
+}
+                
+    @media screen and (max-width:500px){
+        #plant-card-padding {
+            margin-top: 5 !important;
+            padding-top: 5 !important;
+            margin-bottom: 40;
+            padding-bottom: 40;
+        }  
+    }
 
 // .comment-box {
 //     padding-right: 200px;
