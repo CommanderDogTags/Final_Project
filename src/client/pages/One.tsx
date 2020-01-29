@@ -57,52 +57,54 @@ const All: React.FC<AllProps> = props => {
 
     return (
         <>
-            <nav className="navbar p-2 shadow-sm fixed-top sticky-nav bg-white">
+            <nav className="navbar p-2 shadow-sm fixed-top sticky-nav bg-white d-flex justify-content-around">
 
-                <img src={photo.avatar_path} className="avatar-size-single-photo shadow-effect unselectable" />
+                <img src={photo.avatar_path} className="avatar-size shadow-effect unselectable" />
 
                 <h2
-                    className="text-primary custom-center-one unselectable"
+                    className="text-primary unselectable d-flex justify-content-center mr-md-5"
                     id="plantstagram">
                     {photo.username}
                 </h2>
+
+                <div className="mr-3"></div>
 
             </nav>
 
             <div className="row no-gutters" id="single-photo-padding">
                 <div className="container text-center">
                     <img src={photo.image_path} className="" id="single-photo-size" />
-                    <p className="text-center">"{photo.caption}"</p>
+                    <p className="text-center" id="caption">"{photo.caption}"</p>
                     <p className="text-center date-time">posted on {moment(photo._created).format("MMM Do YYYY")}</p>
                 </div>
             </div>
 
-            <div className="container text-center col-md-6 my-auto">
+            <div className="container text-center col-md-8 my-auto">
 
-                    <form className="form-group p-5">
+                <form className="form-group p-5">
 
-                        <textarea
-                            rows={5}
-                            placeholder="Comment on this photo!"
-                            value={comment}
-                            onChange={e => setComment(e.target.value)}
-                            className="form-control"
-                        />
+                    <textarea
+                        rows={5}
+                        placeholder="Comment on this photo!"
+                        value={comment}
+                        onChange={e => setComment(e.target.value)}
+                        className="form-control"
+                    />
 
-                        <button
-                            type="submit"
-                            className="btn btn-outline-primary shadow-effect form-control mt-4"
-                            id="hover"
-                            onClick={handleSubmit}
-                            disabled={!isEnabled}>
-                            Comment!
+                    <button
+                        type="submit"
+                        className="btn btn-outline-primary shadow-effect form-control mt-4"
+                        id="hover"
+                        onClick={handleSubmit}
+                        disabled={!isEnabled}>
+                        Comment!
                         </button>
 
-                    </form>
+                </form>
 
             </div>
 
-            <div className="row no-gutters" id="comment-padding">
+            <div className="col-md-8 mx-auto no-gutters" id="comment-padding">
                 {comments.map(comments => (
                     <CommentCard key={`commentcard-${comments.comment_id}`} comments={comments} />
                 ))}

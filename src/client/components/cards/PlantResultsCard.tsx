@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { json, User } from '../utils/api';
+import { json, User } from '../../utils/api';
 
 const PlantResultsCard: React.FC<PlantResultsCardProps> = props => {
     const [user_id] = useState(User.user_id);
@@ -21,14 +21,14 @@ const PlantResultsCard: React.FC<PlantResultsCardProps> = props => {
 
     return (
         <>
-            <div className="col-md-6 p-4">
+            <div className="col-md-4 p-4">
                 <div className="align-items-center">
                 <div className="border rounded border-primary bg-white">
                     <div className="card-body text-center display:block">
-                            <p className="font-weight-bold">Common Name:</p>
-                            <p>{props.results.common_name}</p>
-                            <p className="font-weight-bold">Scientific Name:</p>
-                            <p>{props.results.scientific_name}</p>
+                            <p className="font-weight-bold text-primary">Common Name:</p>
+                            <p>{props.results?.common_name || 'n/a'}</p>
+                            <p className="font-weight-bold text-primary">Scientific Name:</p>
+                            <p>{props.results?.scientific_name || 'n/a'}</p>
                         <div className="row justify-content-center">
                             <button 
                                 className="btn btn-outline-primary btn-sm shadow-effect" 

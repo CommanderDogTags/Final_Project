@@ -7,6 +7,36 @@ $theme-colors: (
     'light': #c5c5c5
 );
 
+.loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #67DDBB; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+.center-please {
+    width: 200;
+}
+
+    @media screen and (max-width:500px){
+        .center-please {
+            width: 150px;
+        }
+    }
+
+        @media screen and (max-width:360px){
+            .center-please {
+                width: 120px;
+            }
+        }
+
 ::placeholder {
     color: #bdbdbd !important;
 }
@@ -110,6 +140,12 @@ $theme-colors: (
     text-shadow: 2px 2px rgb(173, 251, 229);
 }
 
+.comment-username {
+    font-family: 'Lobster', cursive;
+    font-size: 30px;
+    text-shadow: 2px 2px rgb(173, 251, 229);
+}
+
 .date-time {
     margin-top: -10px;
     font-size: 10px;
@@ -146,7 +182,7 @@ hr.linedivide{
 .dropdown-icon {
     align-items: flex-end;
     margin-top: 25px;
-    margin-right: 20px;
+    // margin-right: 20px;
 }
 
 .iconfontsize {
@@ -214,16 +250,16 @@ hr.linedivide{
         }
 
 #comment-padding {
-    margin-top: 20;
-    padding-top: 20;
+    margin-top: 0;
+    padding-top: 0;
     margin-bottom: 60;
     padding-bottom: 60;
 }
         
     @media screen and (max-width:500px){
         #comment-padding {
-            margin-top: 20;
-            padding-top: 20;
+            margin-top: 0;
+            padding-top: 0;
             margin-bottom: 50;
             padding-bottom: 50;
         }
@@ -231,8 +267,8 @@ hr.linedivide{
         
         @media screen and (max-width:360px){
             #comment-padding {
-                margin-top: 20;
-                padding-top: 20;
+                margin-top: 0;
+                padding-top: 0;
                 margin-bottom: 40;
                 padding-bottom: 40;
             }
@@ -251,6 +287,22 @@ hr.linedivide{
             padding-top: 5 !important;
             margin-bottom: 40;
             padding-bottom: 40;
+        }  
+    }
+
+#plant-info-padding {
+    margin-top: 150;
+    padding-top: 150;
+    margin-bottom: 100;
+    padding-bottom: 100;
+}
+                    
+    @media screen and (max-width:500px){
+        #plant-info-padding {
+            margin-top: 50 !important;
+            padding-top: 50 !important;
+            margin-bottom: 80;
+            padding-bottom: 80;
         }  
     }
 

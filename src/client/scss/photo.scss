@@ -147,3 +147,10 @@
     margin-bottom: 40;
     padding-bottom: 40;
 }
+
+.plant-info-image-size {
+    width: 250;
+    height: 250;
+    object-fit: cover;
+    object-position: 100% 0;
+}

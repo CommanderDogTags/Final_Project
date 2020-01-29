@@ -13,19 +13,19 @@ const ProfileNavbar: React.FC<ProfileNavbarProps> = props => {
             <nav className="navbar p-2 shadow-sm fixed-top sticky-nav bg-white">
 
                 <img 
-                    className="avatar-size shadow-effect unselectable" 
+                    className="avatar-size shadow-effect unselectable ml-3" 
                     src={props.user.avatar_path} 
                     alt="profile picture"
                 />
 
                 <h2
-                    className="text-primary custom-center-profile unselectable"
+                    className="text-primary unselectable mr-md-4"
                     id="plantstagram">
                     {props.user.username}
                 </h2>
 
                 <ul>
-                    <li> <IoIosArrowDropdown className="dropdownfontsize text-primary dropdown-icon" />
+                    <li> <IoIosArrowDropdown className="dropdownfontsize text-primary dropdown-icon mr-3" />
                         <ul>
                             <NavLink
                                 id="dropdown-hover"

@@ -19,6 +19,8 @@ const MyPlants: React.FC<MyPlantsProps> = props => {
         user_id: 0
     });
 
+    const [isLoading, setIsLoading] = useState<boolean>(true);
+
     useEffect(() => {
         (async () => {
             try {
@@ -29,6 +31,7 @@ const MyPlants: React.FC<MyPlantsProps> = props => {
                     setUser(user);
                     let plants = await json(`/api/plants/${User.user_id}`);
                     setPlants(plants);
+                    setIsLoading(false);
                     if (props.location.state?.query.length > 0){
                         setQuery(props.location.state.query)
                     } 
@@ -88,12 +91,13 @@ const MyPlants: React.FC<MyPlantsProps> = props => {
 
                 </div>
 
-                
-                <div className="row no-gutters" id="plant-card-padding">
-                    {plants.map(plant => (
-                        <PlantCard key={`plantcard-${plant.trefle_id}`} plants={plant} />
-                    ))}
-                </div>
+                {isLoading ? <div className="loader mx-auto mt-5"></div> : 
+                    <div className="row no-gutters" id="plant-card-padding">
+                        {plants.map(plant => (
+                            <PlantCard key={`plantcard-${plant.trefle_id}`} plants={plant} />
+                        ))}
+                    </div>
+                }
 
             <Bottomnavbar />
         </>

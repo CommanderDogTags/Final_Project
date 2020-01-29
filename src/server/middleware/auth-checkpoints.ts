@@ -9,7 +9,7 @@ export const tokenMiddleware: RequestHandler = (req: ReqUser, res, next) => {
 };
 
 export const isGuest: RequestHandler = (req: ReqUser, res, next) => {
-    if (req.user && req.user.role === 'guest') {
+    if (req.user.role === 'guest') {
         return next();
     } else {
         res.sendStatus(401);
@@ -26,7 +26,7 @@ export const isOwner: RequestHandler = (req: ReqUser, res, next) => {
 
 export interface ReqUser extends Request {
     user: {
-        role: string;
         user_id: number;
+        role: string;
     }
 }

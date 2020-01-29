@@ -1,11 +1,10 @@
 import * as express from 'express';
 import DB from '../../db';
-import config from '../../config';
-import { isGuest, ReqUser } from '../../middleware/auth-checkpoints';
+import { isGuest } from '../../middleware/auth-checkpoints';
 
 const router = express.Router();
 
-router.get('/:photoid', async (req, res) => {
+router.get('/:photoid', isGuest, async (req, res) => {
     let photoid = req.params.photoid;
     try {
         let comments = await DB.comments.getComments(photoid);
@@ -16,7 +15,7 @@ router.get('/:photoid', async (req, res) => {
     }
 })
 
-router.post('/', async (req, res) => {
+router.post('/', isGuest, async (req, res) => {
     let comment = req.body.comment;
     let user = req.body.user_id;
     let photo = req.body.photo_id;

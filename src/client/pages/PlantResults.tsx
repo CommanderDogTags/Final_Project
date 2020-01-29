@@ -5,7 +5,7 @@ import { json, User } from '../utils/api';
 import { Link } from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa';
 import Bottomnavbar from '../components/Bottomnavbar';
-import PlantResultsCard from '../components/PlantResultsCard';
+import PlantResultsCard from '../components/cards/PlantResultsCard';
 
 const PlantResults: React.FC<PlantResultsProps> = props => {
     const [results, setResults] = useState<SearchResult[]>([])

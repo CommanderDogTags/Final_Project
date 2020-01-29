@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { FaLeaf } from 'react-icons/fa';
+import { GiFlowerPot } from 'react-icons/gi';
 import { MdPhoto } from 'react-icons/md';
 
 const ProfileSwitchBar: React.FC<ProfileSwitchBarProps> = props => {
@@ -20,7 +21,7 @@ const ProfileSwitchBar: React.FC<ProfileSwitchBarProps> = props => {
                     to={{ pathname: `/myplants`}}
                     className="btn btn-outline-primary btn-lg shadow-effect mx-auto"
                     id="hover" >
-                    <FaLeaf />
+                    <GiFlowerPot />
                 </Link>
 
             </nav>

@@ -16,7 +16,7 @@ const Search: React.FC<SearchProps> = props => {
                 if (!User || User.user_id === null || User.role !== 'guest') {
                     props.history.replace('/', { msg: 'You must be logged in to view this page!' });
                 } else {
-                    if (props.location.state.query.length > 0){
+                    if (props.location.state?.query.length > 0){
                         setQuery(props.location.state.query)
                     } 
                 }

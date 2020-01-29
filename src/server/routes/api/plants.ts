@@ -50,13 +50,10 @@ router.get('/:user_id', async (req, res) => {
 })
 
 //gets info for individual plant based on trefle_id
-router.get('/plantinfo/:id', async (req, res, next) => {
+router.get(`/plantinfo/details/:plantid`, async (req, res, next) => {
     try {
-        let plants = await axios.get(`https://trefle.io/api/plants/`, {
-            headers: { 'Authorization': `Bearer ${config.trefle.apiKey}` },
-            params: {
-                id: req.params.id
-            }
+        let plants = await axios.get(`https://trefle.io/api/plants/${req.params.plantid}`, {
+            headers: { 'Authorization': `Bearer ${config.trefle.apiKey}` }
         })
         res.json(plants.data)
     } catch (error) {

@@ -5,16 +5,16 @@ const PlantCard: React.FC<PlantCardProps> = props => {
 
     return (
         <>
-            <div className="col-md-6 p-4">
+            <div className="col-md-4 p-4">
                 <div className="align-items-center">
                 <div className="border rounded border-primary bg-white">
                     <div className="card-body text-center display:block">
-                            <p className="font-weight-bold">Common Name:</p>
-                            <p>{props.plants.common_name}</p>
-                            <p className="font-weight-bold">Scientific Name:</p>
-                            <p>{props.plants.scientific_name}</p>
+                            <p className="font-weight-bold text-primary">Common Name:</p>
+                            <p>{props.plants?.common_name || 'n/a'}</p>
+                            <p className="font-weight-bold text-primary">Scientific Name:</p>
+                            <p>{props.plants?.scientific_name || 'n/a'}</p>
                         <Link 
-                            to={`/plantinfo/${props.plants.trefle_id}`}
+                            to={{pathname: `/plantinfo/${props.plants.trefle_id}`, state: {id: props.plants.trefle_id}}}
                             className = "btn btn-outline-primary btn-sm shadow-effect"
                             id="hover"
                         >

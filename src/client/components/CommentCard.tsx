@@ -5,11 +5,11 @@ const CommentCard: React.FC<CommentCardProps> = props => {
 
     return (
         <>
-            <div className="col-md-4 offset-4">
+            <div className="p-4">
                 <div className="align-items-center">
                     <div className="card-body text-center">
                         <img src={props.comments.avatar_path} className="avatar-size-comment" />
-                        <p>{props.comments.username}</p>
+                        <h3 className="text-primary comment-username">{props.comments.username}</h3>
                         <p>"{props.comments.comment}"</p>
                         <p className="text-center date-time">posted on {moment(props.comments._created).format("MMM Do YYYY")}</p>
                     </div>
