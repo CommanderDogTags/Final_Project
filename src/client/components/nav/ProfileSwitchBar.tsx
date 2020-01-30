@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import { FaLeaf } from 'react-icons/fa';
-import { GiFlowerPot } from 'react-icons/gi';
+import { Link } from 'react-router-dom';
 import { MdPhoto } from 'react-icons/md';
+import { GiFlowerPot } from 'react-icons/gi';
 
 const ProfileSwitchBar: React.FC<ProfileSwitchBarProps> = props => {
 

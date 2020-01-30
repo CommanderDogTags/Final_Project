@@ -65,7 +65,7 @@ router.post('/', upload.single('image_path'), async (req, res) => {
     }
 });
 
-router.delete('/:photoid', isGuest, isOwner, async (req, res) => {
+router.delete('/:photoid', isGuest, async (req, res) => {
     let photoid = req.params.photoid
     try {
         res.json(await DB.photos.deletePhoto(photoid))

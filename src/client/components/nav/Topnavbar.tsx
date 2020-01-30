@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { IoIosArrowDropdown } from 'react-icons/io';
 
 const Topnavbar: React.FC<TopnavbarProps> = props => {
 

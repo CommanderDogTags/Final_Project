@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
-import Topnavbar from '../components/Topnavbar';
-import Bottomnavbar from '../components/Bottomnavbar';
-import { useState, useEffect, useRef } from 'react';
-import { json, User } from '../utils/api';
-import { MdPlayCircleFilled } from 'react-icons/md';
+import Topnavbar from '../../components/nav/Topnavbar';
+import Bottomnavbar from '../../components/nav/Bottomnavbar';
+import { useState, useEffect } from 'react';
+import { json, User } from '../../utils/api';
 
 const EditPhoto: React.FC<EditPhotoProps> = props => {
     const [photo, setPhoto] = useState<{photo_id:number, caption:string, image_path:string}[]>([{photo_id:0, caption:'', image_path:''}]);

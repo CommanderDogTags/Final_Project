@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
-import Topnavbar from '../components/Topnavbar';
-import Bottomnavbar from '../components/Bottomnavbar';
+import Topnavbar from '../../components/nav/Topnavbar';
+import Bottomnavbar from '../../components/nav/Bottomnavbar';
 import { useState, useEffect } from 'react';
-import { json, User } from '../utils/api';
+import { json, User } from '../../utils/api';
 import { MdSearch } from 'react-icons/md';
 
 const Search: React.FC<SearchProps> = props => {

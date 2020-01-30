@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { IoIosArrowDropdown } from 'react-icons/io';
 
 const ProfileNavbar: React.FC<ProfileNavbarProps> = props => {

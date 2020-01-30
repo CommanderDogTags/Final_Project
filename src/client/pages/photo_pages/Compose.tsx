@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
-import Topnavbar from '../components/Topnavbar';
-import Bottomnavbar from '../components/Bottomnavbar';
+import Topnavbar from '../../components/nav/Topnavbar';
+import Bottomnavbar from '../../components/nav/Bottomnavbar';
 import { useState, useEffect, useRef } from 'react';
-import { json, User } from '../utils/api';
-import { MdPlayCircleFilled } from 'react-icons/md';
+import { User } from '../../utils/api';
 
 const Compose: React.FC<ComposeProps> = props => {
     const fileInput = useRef<HTMLInputElement>();

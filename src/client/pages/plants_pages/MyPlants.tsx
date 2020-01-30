@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { json, User } from '../utils/api';
-import { MdSearch, MdSettingsApplications } from 'react-icons/md';
-import ProfileNavbar from '../components/ProfileNavbar';
-import ProfileSwitchBar from '../components/ProfileSwitchBar';
-import Bottomnavbar from '../components/Bottomnavbar';
-import PlantCard from '../components/PlantCard';
+import { json, User } from '../../utils/api';
+import { MdSearch } from 'react-icons/md';
+import ProfileNavbar from '../../components/nav/ProfileNavbar';
+import ProfileSwitchBar from '../../components/nav/ProfileSwitchBar';
+import Bottomnavbar from '../../components/nav/Bottomnavbar';
+import PlantCard from '../../components/cards/PlantCard';
 
 const MyPlants: React.FC<MyPlantsProps> = props => {
     const [query, setQuery] = useState('')

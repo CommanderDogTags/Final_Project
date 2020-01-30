@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { json, User } from '../utils/api';
-import ProfileNavbar from '../components/ProfileNavbar';
-import ProfileSwitchBar from '../components/ProfileSwitchBar';
-import Bottomnavbar from '../components/Bottomnavbar';
-import ProfilePhotoCard from '../components/ProfilePhotoCard';
+import { json, User } from '../../utils/api';
+import ProfileNavbar from '../../components/nav/ProfileNavbar';
+import ProfileSwitchBar from '../../components/nav/ProfileSwitchBar';
+import Bottomnavbar from '../../components/nav/Bottomnavbar';
+import ProfilePhotoCard from '../../components/cards/ProfilePhotoCard';
 
 const Profile: React.FC<ProfileProps> = props => {
     const [photos, setPhotos] = useState<{ photo_id: number, username: string, caption: string, image_path: string, avatar_path: string, _created: string }[]>([]);

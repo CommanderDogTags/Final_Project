@@ -1,19 +1,18 @@
 import * as React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import Register from './pages/Register';
-import All from './pages/All';
-import One from './pages/One';
-import Compose from './pages/Compose';
-import Profile from './pages/Profile';
-import Search from './pages/Search';
-import Results from './pages/Results';
-import EditAvatar from './pages/EditAvatar';
-import EditPhoto from './pages/EditPhoto';
-import PlantSearch from './pages/PlantSearch';
-import MyPlants from './pages/MyPlants';
-import PlantResults from './pages/PlantResults';
-import PlantInfo from './pages/PlantInfo';
+import Home from './pages/login_registration_pages/Home';
+import Register from './pages/login_registration_pages/Register';
+import All from './pages/photo_pages/All';
+import One from './pages/photo_pages/One';
+import Compose from './pages/photo_pages/Compose';
+import Profile from './pages/profile_pages/Profile';
+import Search from './pages/search_pages/Search';
+import Results from './pages/search_pages/Results';
+import EditAvatar from './pages/profile_pages/EditAvatar';
+import EditPhoto from './pages/profile_pages/EditPhoto';
+import MyPlants from './pages/plants_pages/MyPlants';
+import PlantResults from './pages/plants_pages/PlantResults';
+import PlantInfo from './pages/plants_pages/PlantInfo';
 
 const App: React.FC<IAppProps> = props => {
 	return (
@@ -29,7 +28,6 @@ const App: React.FC<IAppProps> = props => {
 				<Route exact path="/results" component={Results} />
 				<Route exact path="/editavatar" component={EditAvatar} />
 				<Route exact path="/editphoto/:photo_id" component={EditPhoto} />
-				<Route exact path="/plantsearch" component={PlantSearch} />
 				<Route exact path="/myplants" component={MyPlants} />
 				<Route exact path="/plantresults" component={PlantResults} />
 				<Route exact path="/plantinfo/:trefle_id" component={PlantInfo} />

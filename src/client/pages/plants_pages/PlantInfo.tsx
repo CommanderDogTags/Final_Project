@@ -1,28 +1,29 @@
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { json, User } from '../utils/api';
+import { json, User } from '../../utils/api';
 import { Link } from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa';
-import Bottomnavbar from '../components/Bottomnavbar';
+import Bottomnavbar from '../../components/nav/Bottomnavbar';
+import { GiFlowerPot } from 'react-icons/gi';
 
 const PlantInfo: React.FC<PlantInfoProps> = props => {
-    const [info, setInfo] = useState<{ 
-        common_name: string, 
-        scientific_name: string, 
+    const [info, setInfo] = useState<{
+        common_name: string,
+        scientific_name: string,
         duration: string,
-        genus: {name:string},
-        class: {name:string},
-        family: {name:string},
-        images: [{url:string}]
+        genus: { name: string },
+        class: { name: string },
+        family: { name: string },
+        images: [{ url: string }]
     }>({
         common_name: '',
         scientific_name: '',
         duration: '',
-        genus:{name:''},
-        class:{name:''},
-        family:{name:''},
-        images: [{url:''}]
+        genus: { name: '' },
+        class: { name: '' },
+        family: { name: '' },
+        images: [{ url: '' }]
     });
 
     const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -45,43 +46,43 @@ const PlantInfo: React.FC<PlantInfoProps> = props => {
 
     let test = (<>
         {info.images.map(image => (
-            <img 
-                src={image.url} 
+            <img
+                src={image.url}
                 key={`plantimage-${image.url}`}
                 className="mx-1 my-1 plant-info-image-size"
             />
         ))}
 
-        <div className="row justify-content-center">
+        <div className="row justify-content-center mt-3">
             <p className="font-weight-bold text-primary">Common Name:</p>
-                <p className="ml-1">{info?.common_name || 'n/a'}</p>
+            <p className="ml-1">{info?.common_name || 'n/a'}</p>
         </div>
 
         <div className="row justify-content-center">
             <p className="font-weight-bold text-primary">Scientific Name:</p>
-                <p className="ml-1">{info?.scientific_name || 'n/a'}</p>
+            <p className="ml-1">{info?.scientific_name || 'n/a'}</p>
         </div>
 
         <div className="row justify-content-center">
             <p className="font-weight-bold text-primary">Genus:</p>
-                <p className="ml-1">{info.genus?.name || 'n/a'}</p>
+            <p className="ml-1">{info.genus?.name || 'n/a'}</p>
         </div>
 
         <div className="row justify-content-center">
             <p className="font-weight-bold text-primary">Family:</p>
-                <p className="ml-1">{info.family?.name || 'n/a'}</p>
+            <p className="ml-1">{info.family?.name || 'n/a'}</p>
         </div>
 
         <div className="row justify-content-center">
             <p className="font-weight-bold text-primary">Class:</p>
-                <p className="ml-1">{info.class?.name || 'n/a'}</p>
+            <p className="ml-1">{info.class?.name || 'n/a'}</p>
         </div>
 
         <div className="row justify-content-center">
             <p className="font-weight-bold text-primary">Duration:</p>
-                <p className="ml-1">{info?.duration || 'n/a'}</p>
+            <p className="ml-1">{info?.duration || 'n/a'}</p>
         </div>
-        </>);
+    </>);
 
     return (
         <>
@@ -104,10 +105,10 @@ const PlantInfo: React.FC<PlantInfoProps> = props => {
 
             <div className="col-md-10 mx-auto p-4" id="plant-info-padding">
                 <div className="align-items-center">
-                        <div className="card-body text-center">
-                            {isLoading ? <div className="loader mx-auto mt-5"></div> : test}
-                            {/* <PlantInfoCard info={info} /> will go where test is */}
-                        </div>
+                    <div className="card-body text-center">
+                        {isLoading ? <div className="loader mx-auto mt-5"></div> : test}
+                        {/* <PlantInfoCard info={info} /> will go where test is */}
+                    </div>
                 </div>
             </div>
 

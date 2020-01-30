@@ -1,15 +1,17 @@
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
+import Bottomnavbar from '../../components/nav/Bottomnavbar';
 import { useState, useEffect } from 'react';
-import { json, User } from '../utils/api';
+import { User } from '../../utils/api';
 import { Link } from 'react-router-dom';
+import ResultsPhotoCard from '../../components/cards/ResultsPhotoCard';
 import { FaArrowLeft } from 'react-icons/fa';
-import Bottomnavbar from '../components/Bottomnavbar';
-import PlantResultsCard from '../components/cards/PlantResultsCard';
 
-const PlantResults: React.FC<PlantResultsProps> = props => {
+const Results: React.FC<ResultsProps> = props => {
     const [results, setResults] = useState<SearchResult[]>([])
     const [query, setQuery] = useState(props.location.state.query)
+
+    const [isLoading, setIsLoading] = useState<boolean>(true);
 
     useEffect(() => {
         (async () => {
@@ -18,6 +20,7 @@ const PlantResults: React.FC<PlantResultsProps> = props => {
                     props.history.replace('/', { msg: 'You must be logged in to view this page!' });
                 } else {
                     setResults(props.location.state.results)
+                    setIsLoading(false);
                 }
             } catch (error) {
                 console.log(error);
@@ -30,7 +33,7 @@ const PlantResults: React.FC<PlantResultsProps> = props => {
             <nav className="navbar p-2 shadow-sm fixed-top sticky-nav bg-white">
 
                 <Link
-                    to={{ pathname: `/myplants`, state: { query } }}
+                    to={{ pathname: `/search`, state: { query } }}
                     className="btn btn-outline-primary shadow-effect back-button-padding"
                     id="hover" >
                     <FaArrowLeft />
@@ -44,24 +47,30 @@ const PlantResults: React.FC<PlantResultsProps> = props => {
 
             </nav>
 
-            <div className="row no-gutters" id="photo-padding">
-                {results.map(result => (
-                    <PlantResultsCard key={`resultsphotocard-${result.id}`} results={result} />
-                ))}
-            </div>
+            {isLoading ? <div className="mx-auto photo-page-spinner"></div> :
+                <div className="row no-gutters" id="photo-padding">
+                    {results.map(result => (
+                        <ResultsPhotoCard key={`resultsphotocard-${result.photo_id}`} results={result} />
+                    ))}
+                </div>
+            }
 
             <Bottomnavbar />
         </>
     );
 };
 
-interface PlantResultsProps extends RouteComponentProps { }
+interface ResultsProps extends RouteComponentProps { }
 
 interface SearchResult {
-    id: number,
-    slug: string,
-    scientific_name: string,
-    common_name: string
+    photo_id: number,
+    user_id: number,
+    caption: string,
+    image_path: string,
+    _created: Date,
+    _updated: Date,
+    username: string,
+    avatar_path: string
 }
 
-export default PlantResults;
+export default Results;

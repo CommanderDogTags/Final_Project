@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { json, User } from '../utils/api';
-import Bottomnavbar from '../components/Bottomnavbar';
-import CommentCard from '../components/CommentCard';
+import { json, User } from '../../utils/api';
+import Bottomnavbar from '../../components/nav/Bottomnavbar';
+import CommentCard from '../../components/cards/CommentCard';
 import * as moment from 'moment';
 
 const All: React.FC<AllProps> = props => {

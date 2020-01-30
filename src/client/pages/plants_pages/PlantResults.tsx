@@ -1,14 +1,13 @@
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
-import Topnavbar from '../components/Topnavbar';
-import Bottomnavbar from '../components/Bottomnavbar';
 import { useState, useEffect } from 'react';
-import { json, User } from '../utils/api';
+import { User } from '../../utils/api';
 import { Link } from 'react-router-dom';
-import ResultsPhotoCard from '../components/ResultsPhotoCard';
 import { FaArrowLeft } from 'react-icons/fa';
+import Bottomnavbar from '../../components/nav/Bottomnavbar';
+import PlantResultsCard from '../../components/cards/PlantResultsCard';
 
-const Results: React.FC<ResultsProps> = props => {
+const PlantResults: React.FC<PlantResultsProps> = props => {
     const [results, setResults] = useState<SearchResult[]>([])
     const [query, setQuery] = useState(props.location.state.query)
 
@@ -30,11 +29,11 @@ const Results: React.FC<ResultsProps> = props => {
         <>
             <nav className="navbar p-2 shadow-sm fixed-top sticky-nav bg-white">
 
-                <Link 
-                    to={{ pathname: `/search`, state: { query } }} 
-                    className="btn btn-outline-primary shadow-effect back-button-padding" 
+                <Link
+                    to={{ pathname: `/myplants`, state: { query } }}
+                    className="btn btn-outline-primary shadow-effect back-button-padding"
                     id="hover" >
-                        <FaArrowLeft />
+                    <FaArrowLeft />
                 </Link>
 
                 <h2
@@ -47,7 +46,7 @@ const Results: React.FC<ResultsProps> = props => {
 
             <div className="row no-gutters" id="photo-padding">
                 {results.map(result => (
-                    <ResultsPhotoCard key={`resultsphotocard-${result.photo_id}`} results={result} />
+                    <PlantResultsCard key={`resultsphotocard-${result.id}`} results={result} />
                 ))}
             </div>
 
@@ -56,17 +55,13 @@ const Results: React.FC<ResultsProps> = props => {
     );
 };
 
-interface ResultsProps extends RouteComponentProps { }
+interface PlantResultsProps extends RouteComponentProps { }
 
 interface SearchResult {
-    photo_id: number,
-    user_id: number,
-    caption: string,
-    image_path: string,
-    _created: Date,
-    _updated: Date,
-    username: string,
-    avatar_path: string
+    id: number,
+    slug: string,
+    scientific_name: string,
+    common_name: string
 }
 
-export default Results;
+export default PlantResults;

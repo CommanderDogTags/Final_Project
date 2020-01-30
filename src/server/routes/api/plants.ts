@@ -62,4 +62,15 @@ router.get(`/plantinfo/details/:plantid`, async (req, res, next) => {
     }
 })
 
+//deletes plant info from db
+router.delete('/:plantid', async (req, res) => {
+    let plantid = req.params.plantid
+    try {
+        res.json(await DB.plants.deletePlant(plantid))
+    } catch (e) {
+        console.log(e)
+        res.sendStatus(500);
+    }
+})
+
 export default router;
