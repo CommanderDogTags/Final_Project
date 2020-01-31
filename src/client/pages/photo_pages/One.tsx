@@ -59,15 +59,17 @@ const All: React.FC<AllProps> = props => {
         <>
             <nav className="navbar p-2 shadow-sm fixed-top sticky-nav bg-white d-flex justify-content-around">
 
-                <img src={photo.avatar_path} className="avatar-size shadow-effect unselectable" />
+                <div className="d-flex justify-content-center">
 
-                <h2
-                    className="text-primary unselectable d-flex justify-content-center mr-md-5"
-                    id="plantstagram">
-                    {photo.username}
-                </h2>
+                    <img src={photo.avatar_path} className="avatar-size shadow-effect unselectable mr-4" />
 
-                <div className="mr-3"></div>
+                    <h2
+                        className="text-primary unselectable my-auto"
+                        id="plantstagram">
+                        {photo.username}
+                    </h2>
+
+                </div>
 
             </nav>
 
