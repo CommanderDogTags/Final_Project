@@ -16,7 +16,8 @@ const PlantInfo: React.FC<PlantInfoProps> = props => {
         class: { name: string },
         family: { name: string },
         images: [{ url: string }]
-    }>({
+    }>
+    ({
         common_name: '',
         scientific_name: '',
         duration: '',
@@ -45,6 +46,8 @@ const PlantInfo: React.FC<PlantInfoProps> = props => {
     }, []);
 
     let test = (<>
+        
+        {/* <GiFlowerPot className="text-primary" size="20rem"/> */}
         {info.images.map(image => (
             <img
                 src={image.url}
