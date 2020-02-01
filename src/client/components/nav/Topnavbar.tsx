@@ -8,8 +8,11 @@ const Topnavbar: React.FC<TopnavbarProps> = props => {
 
                 <h2
                     className="text-primary custom-center unselectable"
-                    id="plantstagram">
+                    id="plantstagram"
+                >
+                <a href="/all" id="navbar-name-hover">
                     Plantstagram
+                </a>
                 </h2>
                 
             </nav>

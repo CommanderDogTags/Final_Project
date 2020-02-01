@@ -7,55 +7,59 @@ const PlantCard: React.FC<PlantCardProps> = props => {
 
     const handleDelete = async (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-            Swal.fire({
-                title: 'Are you sure you want to remove this plant from your collection?',
-                icon: 'warning',
-                confirmButtonText: 'Yes!',
-                confirmButtonColor: '#67DDBB',
-                showCancelButton: true,
-                cancelButtonColor: '#DD6B67',
-                cancelButtonText: 'No!'
-            }).then((result:any) => {
-                if (result.value) {
-                    try {
-                        let response = json(`/api/plants/${props.plants.plant_id}`, 'DELETE');
-                        window.location.reload();
-                        console.log(response);
-                    } catch (error) {
-                        console.log(error);
-                    }
+        Swal.fire({
+            title: 'Are you sure you want to remove this plant from your collection?',
+            icon: 'warning',
+            confirmButtonText: 'Yes!',
+            confirmButtonColor: '#67DDBB',
+            showCancelButton: true,
+            cancelButtonColor: '#DD6B67',
+            cancelButtonText: 'No!'
+        }).then((result: any) => {
+            if (result.value) {
+                try {
+                    let response = json(`/api/plants/${props.plants.plant_id}`, 'DELETE');
+                    window.location.reload();
+                    console.log(response);
+                } catch (error) {
+                    console.log(error);
                 }
-            })
+            }
+        })
     };
 
     return (
         <>
-            <div className="col-md-4 p-4 text-center">
+            <div className="col-md-4 p-4">
                 <div className="border rounded border-primary bg-white">
-                    <div className="card-body text-center display:block">
+                    <div className="card-body display:block">
+                        <div className="row justify-content-end mr-1 mb-2">
+                            <button
+                                className="btn btn-outline-primary btn-sm shadow-effect justify-content-end"
+                                id="hover"
+                                onClick={handleDelete}
+                            >
+                                x
+                            </button>
+                        </div>
 
-                        <p className="font-weight-bold text-primary">Common Name:</p>
-                        <p>{props.plants?.common_name || 'n/a'}</p>
-                        <p className="font-weight-bold text-primary">Scientific Name:</p>
-                        <p>{props.plants?.scientific_name || 'n/a'}</p>
+                        <p className="font-weight-bold text-primary text-center">Common Name:</p>
+                        <p className="text-center">{props.plants?.common_name || 'n/a'}</p>
+                        <p className="font-weight-bold text-primary text-center">Scientific Name:</p>
+                        <p className="text-center">{props.plants?.scientific_name || 'n/a'}</p>
 
-                        <Link 
-                            to={{pathname: `/plantinfo/${props.plants.trefle_id}`, state: {id: props.plants.trefle_id}}}
-                            className = "btn btn-outline-primary btn-md shadow-effect"
-                            id="hover"
-                        >
+                        <div className="row justify-content-center">
+                            <Link
+                                to={{ pathname: `/plantinfo/${props.plants.trefle_id}`, state: { id: props.plants.trefle_id } }}
+                                className="btn btn-outline-primary btn-md shadow-effect"
+                                id="hover"
+                            >
                                 Plant Info
-                        </Link>
+                            </Link>
+                        </div>
 
                     </div>
 
-                        <button 
-                            className = "btn btn-outline-primary btn-sm shadow-effect mb-4"
-                            id="hover"
-                            onClick={handleDelete}
-                        >
-                            x
-                        </button>
                 </div>
             </div>
         </>
@@ -63,7 +67,7 @@ const PlantCard: React.FC<PlantCardProps> = props => {
 }
 
 interface PlantCardProps {
-    plants: {    
+    plants: {
         plant_id: number,
         trefle_id: number,
         common_name: string,

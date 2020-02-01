@@ -36,27 +36,30 @@ $theme-colors: (
         100% { transform: rotate(360deg); }
     }
 
-.center-please {
-    width: 200;
-}
-
-    @media screen and (max-width:500px){
-        .center-please {
-            width: 150px;
-        }
-    }
-
-        @media screen and (max-width:360px){
-            .center-please {
-                width: 120px;
-            }
-        }
-
 ::placeholder {
     color: #bdbdbd !important;
 }
 
+#muted-text {
+    color: #bdbdbd;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#muted-text:hover {
+    color: #67DDBB;
+    text-decoration: none;
+    cursor: pointer;
+    // text-shadow: 1px 1px #bdbdbd;
+}
+
 #hover:hover{color:#ffffff};
+
+#navbar-name-hover:hover{
+    color:rgb(96, 238, 198);
+    text-decoration: none;
+    cursor: pointer;
+};
 
 #button-hover:hover{
     background-color:  #67DDBB;

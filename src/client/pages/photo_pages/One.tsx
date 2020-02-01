@@ -55,6 +55,11 @@ const All: React.FC<AllProps> = props => {
 
     const isEnabled = comment.length > 0;
 
+    const refreshPage = async (e: React.MouseEvent) => {
+        window.location.reload();
+        window.scrollTo(0, 0);
+    };
+    
     return (
         <>
             <nav className="navbar p-2 shadow-sm fixed-top sticky-nav bg-white d-flex justify-content-around">
@@ -62,11 +67,15 @@ const All: React.FC<AllProps> = props => {
                 <div className="d-flex justify-content-center">
 
                     <img src={photo.avatar_path} className="avatar-size shadow-effect unselectable mr-4" />
-
+                    
                     <h2
                         className="text-primary unselectable my-auto"
-                        id="plantstagram">
-                        {photo.username}
+                        id="plantstagram"
+                        
+                    >
+                        <a id="navbar-name-hover" onClick={refreshPage}>
+                            {photo.username}
+                        </a>
                     </h2>
 
                 </div>
@@ -76,12 +85,12 @@ const All: React.FC<AllProps> = props => {
             <div className="row no-gutters" id="single-photo-padding">
                 <div className="container text-center">
                     <img src={photo.image_path} className="" id="single-photo-size" />
-                    <p className="text-center" id="caption">"{photo.caption}"</p>
+                    <p className="text-center" id="caption">{photo.caption}</p>
                     <p className="text-center date-time">posted on {moment(photo._created).format("MMM Do YYYY")}</p>
                 </div>
             </div>
 
-            <div className="container text-center col-md-8 my-auto">
+            <div className="container text-center col-md-8 my-auto" id="commentSection">
 
                 <form className="form-group p-5">
 
@@ -106,11 +115,11 @@ const All: React.FC<AllProps> = props => {
 
             </div>
 
-            <div className="col-md-8 mx-auto no-gutters" id="comment-padding">
-                {comments.map(comments => (
-                    <CommentCard key={`commentcard-${comments.comment_id}`} comments={comments} />
-                ))}
-            </div>
+                <div className="col-md-8 mx-auto no-gutters" id="comment-padding">
+                    {comments.map(comments => (
+                        <CommentCard key={`commentcard-${comments.comment_id}`} comments={comments} />
+                    ))}
+                </div>
 
             <Bottomnavbar />
         </>

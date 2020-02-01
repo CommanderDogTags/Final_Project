@@ -20,8 +20,11 @@ const ProfileNavbar: React.FC<ProfileNavbarProps> = props => {
 
                 <h2
                     className="text-primary unselectable mr-md-4"
-                    id="plantstagram">
-                    {props.user.username}
+                    id="plantstagram"
+                >
+                    <a href="/profile" id="navbar-name-hover">
+                        {props.user.username}
+                    </a>
                 </h2>
 
                 <ul>

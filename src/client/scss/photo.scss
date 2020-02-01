@@ -149,8 +149,26 @@
 }
 
 .plant-info-image-size {
-    width: 250;
-    height: 250;
+    width: 300;
+    height: 300;
     object-fit: cover;
     object-position: 100% 0;
 }
+
+    @media screen and (max-width:500px){
+        .plant-info-image-size {
+            width: 250;
+            height: 250;
+            object-fit: cover;
+            object-position: 100% 0;
+        }
+    }
+
+        @media screen and (max-width:360px){
+            .plant-info-image-size {
+                width: 200;
+                height: 200;
+                object-fit: cover;
+                object-position: 100% 0;
+            }
+        }

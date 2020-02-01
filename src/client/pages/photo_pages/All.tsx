@@ -7,7 +7,7 @@ import { json, User } from '../../utils/api';
 import PhotoCard from '../../components/cards/PhotoCard';
 
 const All: React.FC<AllProps> = props => {
-    const [photos, setPhotos] = useState<{ photo_id: number, username: string, caption: string, image_path: string, avatar_path: string, _created: string }[]>([]);
+    const [photos, setPhotos] = useState<{ photo_id: number, username: string, caption: string, image_path: string, avatar_path: string, _created: string, comment_count: number }[]>([]);
 
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
@@ -15,7 +15,7 @@ const All: React.FC<AllProps> = props => {
         (async () => {
             try {
                 if (!User || User.user_id === null || User.role !== 'guest') {
-                    props.history.replace('/', { msg: 'You must be logged in to view this page!' });
+                    props.history.replace('/', { msg: 'Login info is incorrect!' });
                 } else {
                     let photos = await json('/api/photos');
                     setPhotos(photos);

@@ -76,9 +76,16 @@ const Home: React.FC<HomeProps> = props => {
                     </div>
 
                     {props.location.state &&
-                        <div className="alert alert-danger text-center">
-                            {props.location.state.msg} <button className="btn btn-primary text-white btn-sm" onClick={handleDelete}>X</button>
-                        </div>}
+                        <div className="alert alert-danger text-center mt-2">
+                            {props.location.state.msg}
+                            <button 
+                                className="btn btn-primary text-white btn-sm ml-2" 
+                                onClick={handleDelete}
+                            >
+                                X
+                            </button>
+                        </div>
+                    }
 
                 </div>
             </div>

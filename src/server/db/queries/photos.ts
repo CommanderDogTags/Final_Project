@@ -1,6 +1,6 @@
 import { Query } from "../index";
 
-const getAll = () => Query<[]>(`SELECT p.photo_id, u.username, u.role, u.avatar_path, p.caption, p.image_path, p._created FROM photos p JOIN users u ON u.user_id = p.user_id ORDER BY _created DESC`);
+const getAll = () => Query<[]>(`SELECT p.photo_id, u.username, u.role, u.avatar_path, p.caption, p.image_path, p._created, COUNT(c.comment_id) as comment_count FROM photos p JOIN users u ON u.user_id = p.user_id LEFT JOIN comments c ON c.photo_id = p.photo_id GROUP BY p.photo_id ORDER BY p._created DESC;`);
 
 const getSinglePhoto = async (photo_id: string) => Query<{}[]>(`SELECT p.photo_id, u.username, u.role u.avatar_path, p.caption, p.image_path, p._created FROM photos p JOIN users u ON u.user_id = p.user_id WHERE p.photo_id =?`, [photo_id]);
 

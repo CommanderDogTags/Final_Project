@@ -52,38 +52,40 @@ const PlantInfo: React.FC<PlantInfoProps> = props => {
             <img
                 src={image.url}
                 key={`plantimage-${image.url}`}
-                className="mx-1 my-1 plant-info-image-size"
+                className="mx-2 my-2 plant-info-image-size"
             />
         ))}
 
-        <div className="row justify-content-center mt-3">
-            <p className="font-weight-bold text-primary">Common Name:</p>
-            <p className="ml-1">{info?.common_name || 'n/a'}</p>
-        </div>
+        <div className="border rounded border-primary mt-5">
+            <div className="row justify-content-center mt-3">
+                <p className="font-weight-bold text-primary">Common Name:</p>
+                <p className="ml-1">{info?.common_name || 'n/a'}</p>
+            </div>
 
-        <div className="row justify-content-center">
-            <p className="font-weight-bold text-primary">Scientific Name:</p>
-            <p className="ml-1">{info?.scientific_name || 'n/a'}</p>
-        </div>
+            <div className="row justify-content-center">
+                <p className="font-weight-bold text-primary">Scientific Name:</p>
+                <p className="ml-1">{info?.scientific_name || 'n/a'}</p>
+            </div>
 
-        <div className="row justify-content-center">
-            <p className="font-weight-bold text-primary">Genus:</p>
-            <p className="ml-1">{info.genus?.name || 'n/a'}</p>
-        </div>
+            <div className="row justify-content-center">
+                <p className="font-weight-bold text-primary">Genus:</p>
+                <p className="ml-1">{info.genus?.name || 'n/a'}</p>
+            </div>
 
-        <div className="row justify-content-center">
-            <p className="font-weight-bold text-primary">Family:</p>
-            <p className="ml-1">{info.family?.name || 'n/a'}</p>
-        </div>
+            <div className="row justify-content-center">
+                <p className="font-weight-bold text-primary">Family:</p>
+                <p className="ml-1">{info.family?.name || 'n/a'}</p>
+            </div>
 
-        <div className="row justify-content-center">
-            <p className="font-weight-bold text-primary">Class:</p>
-            <p className="ml-1">{info.class?.name || 'n/a'}</p>
-        </div>
+            <div className="row justify-content-center">
+                <p className="font-weight-bold text-primary">Class:</p>
+                <p className="ml-1">{info.class?.name || 'n/a'}</p>
+            </div>
 
-        <div className="row justify-content-center">
-            <p className="font-weight-bold text-primary">Duration:</p>
-            <p className="ml-1">{info?.duration || 'n/a'}</p>
+            <div className="row justify-content-center">
+                <p className="font-weight-bold text-primary">Duration:</p>
+                <p className="ml-1">{info?.duration || 'n/a'}</p>
+            </div>
         </div>
     </>);
 
