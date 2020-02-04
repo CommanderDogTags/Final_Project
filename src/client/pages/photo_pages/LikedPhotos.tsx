@@ -8,7 +8,6 @@ import PhotoCard from '../../components/cards/PhotoCard';
 
 const LikedPhotos: React.FC<LikedPhotosProps> = props => {
     const [photos, setPhotos] = useState<{ photo_id: number, username: string, caption: string, image_path: string, avatar_path: string, _created: string, comment_count: number }[]>([]);
-
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
     useEffect(() => {
