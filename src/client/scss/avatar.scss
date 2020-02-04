@@ -71,12 +71,25 @@
     }
 
 .avatar-size-results {
-    height: 40px;
-    width: 40px;
+    height: 35px;
+    width: 35px;
     border-radius: 50%;
+    margin-top: 10px;
     margin-left: 0px;
     margin-right: 0px;
     object-fit: cover;
+}
+
+@media screen and (max-width:500px){
+    .avatar-size-results {
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+        margin-top: 14px;
+        margin-left: 0px;
+        margin-right: 0px;
+        object-fit: cover;
+    }
 }
 
 .avatar-size-edit {

@@ -29,7 +29,7 @@ const All: React.FC<AllProps> = props => {
                 if (!User || User.user_id === null || User.role !== 'guest') {
                     props.history.replace('/', { msg: 'You must be logged in to view this page!' });
                 } else {
-                    window.scrollTo(0, 0)
+                    // window.scrollTo(0, 0)
                     setPhoto(props.location.state.photo);
                     let user = await json('/api/users');
                     setUser(user);

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { NavLink } from 'react-router-dom';
 import { MdHome, MdSearch, MdPerson, MdAdd } from 'react-icons/md';
+import { IoMdHeartEmpty } from 'react-icons/io';
 
 const Bottomnavbar: React.FC<BottomnavbarProps> = props => {
 
@@ -21,6 +22,14 @@ const Bottomnavbar: React.FC<BottomnavbarProps> = props => {
                 className="btn btn-outline-primary mx-auto my-auto shadow-effect"
                 activeClassName="btn btn-primary mx-auto my-auto shadow-effect text-white">
                 <MdAdd className="iconfontsize" />
+            </NavLink>
+
+            <NavLink
+                id="hover"
+                exact to="/likedphotos"
+                className="btn btn-outline-primary mx-auto my-auto shadow-effect"
+                activeClassName="btn btn-primary mx-auto my-auto shadow-effect text-white">
+                <IoMdHeartEmpty className="iconfontsize" />
             </NavLink>
 
             <NavLink

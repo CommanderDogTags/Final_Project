@@ -13,6 +13,7 @@ import EditPhoto from './pages/profile_pages/EditPhoto';
 import MyPlants from './pages/plants_pages/MyPlants';
 import PlantResults from './pages/plants_pages/PlantResults';
 import PlantInfo from './pages/plants_pages/PlantInfo';
+import LikedPhotos from './pages/photo_pages/LikedPhotos';
 
 const App: React.FC<IAppProps> = props => {
 	return (
@@ -23,9 +24,10 @@ const App: React.FC<IAppProps> = props => {
 				<Route exact path="/all" component={All} />
 				<Route exact path="/one/:photo_id" component={One} />
 				<Route exact path="/compose" component={Compose} />
-				<Route exact path="/profile" component={Profile} />
+				<Route exact path="/likedphotos" component={LikedPhotos} />
 				<Route exact path="/search" component={Search} />
 				<Route exact path="/results" component={Results} />
+				<Route exact path="/profile" component={Profile} />
 				<Route exact path="/editavatar" component={EditAvatar} />
 				<Route exact path="/editphoto/:photo_id" component={EditPhoto} />
 				<Route exact path="/myplants" component={MyPlants} />
