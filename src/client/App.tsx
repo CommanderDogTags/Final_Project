@@ -14,6 +14,7 @@ import MyPlants from './pages/plants_pages/MyPlants';
 import PlantResults from './pages/plants_pages/PlantResults';
 import PlantInfo from './pages/plants_pages/PlantInfo';
 import LikedPhotos from './pages/photo_pages/LikedPhotos';
+import Scroll from './pages/Scroll';
 
 const App: React.FC<IAppProps> = props => {
 	return (
@@ -33,6 +34,7 @@ const App: React.FC<IAppProps> = props => {
 				<Route exact path="/myplants" component={MyPlants} />
 				<Route exact path="/plantresults" component={PlantResults} />
 				<Route exact path="/plantinfo/:trefle_id" component={PlantInfo} />
+				<Route exact path="/scroll" component={Scroll} />
 			</Switch>
 		</Router>
 	);

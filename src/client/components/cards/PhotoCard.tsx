@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { json, User } from '../../utils/api';
 import { HashLink as NavLink } from 'react-router-hash-link';
 import { IoMdHeartEmpty, IoMdHeart } from 'react-icons/io';
+import Swal from 'sweetalert2';
 
 const PhotoCard: React.FC<PhotoCardProps> = props => {
     const [user_id] = useState(User.user_id);
@@ -35,6 +36,12 @@ const PhotoCard: React.FC<PhotoCardProps> = props => {
                 let response: any = await json('/api/likes', 'POST', { user_id, photo_id });
                 console.log(response);
                 setHeart(true);
+                Swal.fire({
+                    title: 'Added to Liked Photos!',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
             } else {
                 let response: any = await json('/api/likes', 'DELETE', { user_id, photo_id });
                 console.log(response);

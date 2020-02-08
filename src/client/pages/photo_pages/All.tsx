@@ -5,6 +5,8 @@ import Bottomnavbar from '../../components/nav/Bottomnavbar';
 import { useState, useEffect } from 'react';
 import { json, User } from '../../utils/api';
 import PhotoCard from '../../components/cards/PhotoCard';
+import LazyLoad from 'react-lazy-load';
+import InfiniteScroll from 'react-infinite-scroller';
 
 const All: React.FC<AllProps> = props => {
     const [photos, setPhotos] = useState<{ photo_id: number, username: string, caption: string, image_path: string, avatar_path: string, _created: string, comment_count: number }[]>([]);
@@ -31,13 +33,14 @@ const All: React.FC<AllProps> = props => {
         <>
             <Topnavbar />
 
-            {isLoading ? <div className="mx-auto photo-page-spinner"></div> :
+            {/* {isLoading ? <div className="mx-auto photo-page-spinner"></div> : */}
                 <div className="row no-gutters" id="photo-padding">
                     {photos.map(photo => (
                         <PhotoCard key={`photoscard-${photo.photo_id}`} photo={photo} />
                     ))}
                 </div>
-            }
+
+            {/* } */}
 
             <Bottomnavbar />
         </>
