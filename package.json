@@ -52,7 +52,7 @@
     "file-loader": "^5.0.2",
     "helmet": "^3.21.2",
     "intersection-observer": "^0.7.0",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.24.0",
     "morgan": "^1.9.1",
